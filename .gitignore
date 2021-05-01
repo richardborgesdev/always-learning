@@ -2,3 +2,6 @@
 dart/.packages
 dart/.dart_tool
 dart/pubspec.lock
+
+# vue
+vue/node_modules
