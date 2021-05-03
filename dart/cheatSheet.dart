@@ -647,3 +647,16 @@ void exercisePuttingItAllTogether() {
   print(anyInvalidEmailAddress(emailsList));
   print(validEmailAddresses(emailsList));
 }
+
+/*
+  https://dart.dev/codelabs/async-await#example-introducing-futures
+*/
+Future<void> fetchUserOrder() {
+  // Imagine that this function is fetching user info from another service or database.
+  return Future.delayed(Duration(seconds: 2), () => print('Large Latte'));
+}
+
+void introducingFutures() {
+  fetchUserOrder();
+  print('Fetching user order...');
+}
