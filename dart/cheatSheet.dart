@@ -1,5 +1,5 @@
 void main() {
-  executionWithinAsyncFunctions();
+  practiceUsingAsyncAndAwait();
 }
 
 /*
@@ -701,4 +701,32 @@ void countSeconds(int s) {
   for (var i = 1; i <= s; i++) {
     Future.delayed(Duration(seconds: i), () => print(i));
   }
+}
+
+/*
+  https://dart.dev/codelabs/async-await#exercise-practice-using-async-and-await
+*/
+const role = 'administrator';
+const oneSecond = Duration(seconds: 1);
+
+Future<String> fetchRole() => Future.delayed(oneSecond, () => role);
+
+Future<String> reportUserRole() async {
+  String username = await fetchRole();
+
+  return 'User role: $username';
+}
+
+const logins = 42;
+Future<int> fetchLoginAmount() => Future.delayed(oneSecond, () => logins);
+
+Future<String> reportLogins() async {
+  int logins = await fetchLoginAmount();
+
+  return 'Total number of logins: $logins';
+}
+
+void practiceUsingAsyncAndAwait() async {
+  print(await reportUserRole());
+  print(await reportLogins());
 }
