@@ -1,5 +1,5 @@
 void main() {
-  practiceUsingAsyncAndAwait();
+  handlingFutureErrors();
 }
 
 /*
@@ -729,4 +729,29 @@ Future<String> reportLogins() async {
 void practiceUsingAsyncAndAwait() async {
   print(await reportUserRole());
   print(await reportLogins());
+}
+
+/*
+  https://dart.dev/codelabs/async-await#handling-errors
+*/
+Future<void> printOrderMessageHandlingError() async {
+  try {
+    var order = await fetchUserOrderHandlingError();
+    print('Awaiting user order...');
+    print(order);
+  } catch (err) {
+    print('Caught error: $err');
+  }
+}
+
+Future<String> fetchUserOrderHandlingError() {
+  // Imagine that this function is more complex.
+  var str = Future.delayed(
+      Duration(seconds: 4),
+      () => throw 'Cannot locate user order');
+  return str;
+}
+
+void handlingFutureErrors () async {
+  await printOrderMessageHandlingError();
 }
