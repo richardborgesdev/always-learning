@@ -1,5 +1,5 @@
 void main() {
-  handlingFutureErrors();
+  practiceHandlingFutureErrors();
 }
 
 /*
@@ -754,4 +754,29 @@ Future<String> fetchUserOrderHandlingError() {
 
 void handlingFutureErrors () async {
   await printOrderMessageHandlingError();
+}
+
+/*
+  https://dart.dev/codelabs/async-await#exercise-practice-handling-errors
+*/
+class UserError implements Exception {
+  String errMsg() => 'New username is invalid';
+}
+
+Future fetchNewUsername() {
+  var str = Future.delayed(oneSecond, () => throw UserError());
+  return str;
+}
+
+// Implement changeUsername here
+Future<String> changeUsername() async {
+  try {
+    return await fetchNewUsername();
+  } catch (error) {
+    return error.toString();
+  }
+}
+
+void practiceHandlingFutureErrors() async {
+  print(await changeUsername());
 }
