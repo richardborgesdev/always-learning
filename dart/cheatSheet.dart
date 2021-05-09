@@ -780,3 +780,38 @@ Future<String> changeUsername() async {
 void practiceHandlingFutureErrors() async {
   print(await changeUsername());
 }
+
+/*
+  https://dart.dev/codelabs/async-await#exercise-putting-it-all-together
+*/
+bool logoutSucceeds = false;
+
+Future<String> fetchUsername() => Future.delayed(oneSecond, () => 'Jean');
+String failOnce () {
+  if (logoutSucceeds) {
+    return 'Success!';
+  } else {
+    logoutSucceeds = true;
+    throw Exception('Logout failed');
+  }
+}
+
+logoutUser() => Future.delayed(oneSecond, failOnce);
+
+// Part 1
+String addHello(user) => 'Hello $user';
+
+// Part 2
+// You can call the provided async function fetchUsername()
+// to return the username.
+greetUser(){}
+
+// Part 3
+// You can call the provided async function logoutUser()
+// to log out the user.
+sayGoodbye(){}
+
+
+void futurePuttingItAllTogether() {
+
+}
