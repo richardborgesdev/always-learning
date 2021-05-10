@@ -1,5 +1,5 @@
 void main() {
-  practiceHandlingFutureErrors();
+  futurePuttingItAllTogether();
 }
 
 /*
@@ -804,14 +804,29 @@ String addHello(user) => 'Hello $user';
 // Part 2
 // You can call the provided async function fetchUsername()
 // to return the username.
-greetUser(){}
+Future<String> greetUser() async {
+  var userName = await fetchUsername();
+  return addHello(userName);
+}
 
 // Part 3
 // You can call the provided async function logoutUser()
 // to log out the user.
-sayGoodbye(){}
-
-
-void futurePuttingItAllTogether() {
-
+Future<String> sayGoodbye() async {
+  try {
+    var msg = await logoutUser();
+    return '$msg Thanks, see you next time';
+  } catch (e) {
+    return 'Faile: $e';
+  }
 }
+
+void futurePuttingItAllTogether() async {
+  print(await greetUser());
+  print(await sayGoodbye()); // fail
+  print(await sayGoodbye()); // success
+}
+
+/*
+  https://dart.dev/codelabs/null-safety
+*/
