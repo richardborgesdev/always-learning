@@ -828,5 +828,10 @@ void futurePuttingItAllTogether() async {
 }
 
 /*
-  https://dart.dev/codelabs/null-safety
+  https://dart.dev/codelabs/null-safety#exercise-non-nullable-types
 */
+void nonNullableTypes() {
+  int? a;
+  a = null;
+  print('a is $a.');
+}
