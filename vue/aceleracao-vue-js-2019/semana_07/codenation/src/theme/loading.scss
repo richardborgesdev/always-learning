@@ -1,0 +1,60 @@
+@import './variables.scss';
+.loading {
+  position: relative;
+
+  // TODO: alterar filter para backdrop-filter quando for implementado
+  &:not(.solid) {
+    & > * {
+      filter: blur(4px);
+    }
+
+    &::before {
+      opacity: .45;
+    }
+  }
+
+  &.screen {
+    background-color: $body-background-color;
+  }
+
+  &::before {
+    $position: 0px;
+
+    animation: fadeInOverlay .2s;
+    background-color: #fff;
+    border-radius: 5px;
+    bottom: $position;
+    content: '';
+    left: $position;
+    position: absolute;
+    right: $position;
+    top: $position;
+    z-index: 100;
+  }
+
+  &:not(.no-spinner) {
+    &::after {
+      @include loader;
+
+      border-width: 5px !important;
+      height: 30px !important;
+      left: 50% !important;
+      margin-left: -15px !important;
+      margin-top: -15px !important;
+      position: absolute !important;
+      top: 50% !important;
+      width: 30px !important;
+      z-index: 200 !important;
+    }
+  }
+
+  @keyframes fadeInOverlay {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: .65;
+    }
+  }
+}
