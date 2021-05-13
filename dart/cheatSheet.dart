@@ -1,5 +1,5 @@
 void main() {
-  futurePuttingItAllTogether();
+  nullableTypeParametersForGenerics();
 }
 
 /*
@@ -828,10 +828,23 @@ void futurePuttingItAllTogether() async {
 }
 
 /*
-  https://dart.dev/codelabs/null-safety#exercise-non-nullable-types
+  https://dart.dev/codelabs/null-safety#exercise-nullable-types
 */
 void nonNullableTypes() {
   int? a;
   a = null;
   print('a is $a.');
+}
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-nullable-type-parameters-for-generics
+*/
+void nullableTypeParametersForGenerics() {
+  List<String> aListOfStrings = ['one', 'two', 'three'];
+  List<String>? aNullableListOfStrings;
+  List<String?> aListOfNullableStrings = ['one', null, 'three'];
+
+  print('aListOfStrings is $aListOfStrings.');
+  print('aNullableListOfStrings is $aNullableListOfStrings.');
+  print('aListOfNullableStrings is $aListOfNullableStrings.');
 }
