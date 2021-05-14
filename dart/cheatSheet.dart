@@ -848,3 +848,7 @@ void nullableTypeParametersForGenerics() {
   print('aNullableListOfStrings is $aNullableListOfStrings.');
   print('aListOfNullableStrings is $aListOfNullableStrings.');
 }
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-null-assertion
+*/
