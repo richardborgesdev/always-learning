@@ -1,5 +1,5 @@
 void main() {
-  nullableTypeParametersForGenerics();
+  definiteAssignment();
 }
 
 /*
@@ -865,4 +865,20 @@ void nullAssertion() {
   print('a is $a.');
   print('b is $b.');
   print('c is $c.');
+}
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-definite-assignment
+*/
+void definiteAssignment() {
+  String text;
+
+  if (DateTime.now().hour < 12) {
+   text = "It's morning! Let's make aloo paratha!";
+  } else {
+    text = "It's afternoon! Let's make biryani!";
+  }
+
+  print(text);
+  print(text.length);
 }
