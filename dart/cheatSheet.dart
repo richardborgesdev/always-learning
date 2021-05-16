@@ -882,3 +882,17 @@ void definiteAssignment() {
   print(text);
   print(text.length);
 }
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-null-checking
+*/
+int getLength(String? str) {
+  // Add null check here
+  str ??= '';
+
+  return str.length;
+}
+
+void nullChecking() {
+  print(getLength('This is a string!'));
+}
