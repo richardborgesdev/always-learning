@@ -1,5 +1,5 @@
 void main() {
-  definiteAssignment();
+  promotionWithExceptions();
 }
 
 /*
@@ -895,4 +895,17 @@ int getLength(String? str) {
 
 void nullChecking() {
   print(getLength('This is a string!'));
+}
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-promotion-with-exceptions
+*/
+int getLengthWithExceptions(String? str) {
+  // Try throwing an exception here if `str` is null.
+  return str == null ? throw Exception('str is null') : str.length;
+}
+
+void promotionWithExceptions() {
+  print(getLengthWithExceptions('str is not null'));
+  print(getLengthWithExceptions(null));
 }
