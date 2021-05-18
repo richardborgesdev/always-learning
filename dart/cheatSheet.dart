@@ -1,5 +1,5 @@
 void main() {
-  promotionWithExceptions();
+  usingLate();
 }
 
 /*
@@ -908,4 +908,23 @@ int getLengthWithExceptions(String? str) {
 void promotionWithExceptions() {
   print(getLengthWithExceptions('str is not null'));
   print(getLengthWithExceptions(null));
+}
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-using-late
+*/
+class Meal {
+  late String _description;
+
+  void set description(String str) {
+    _description = str;
+  }
+
+  String get description => _description;
+}
+
+void usingLate() {
+  final myMeal = Meal();
+  myMeal.description = 'Feijoada!';
+  print(myMeal.description);
 }
