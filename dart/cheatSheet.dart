@@ -1,5 +1,5 @@
 void main() {
-  usingLate();
+  lateCircularReferences();
 }
 
 /*
@@ -927,4 +927,24 @@ void usingLate() {
   final myMeal = Meal();
   myMeal.description = 'Feijoada!';
   print(myMeal.description);
+}
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-late-circular-references
+*/
+class Team {
+  late final Coach coach;
+}
+
+class Coach {
+  late final Team team;
+}
+
+void lateCircularReferences() {
+  final myTeam = Team();
+  final myCoach = Coach();
+  myTeam.coach = myCoach;
+  myCoach.team = myTeam;
+
+  print('All done!');
 }
