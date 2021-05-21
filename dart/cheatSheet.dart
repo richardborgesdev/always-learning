@@ -1,5 +1,5 @@
 void main() {
-  usingLate();
+  lateCircularReferences();
 }
 
 /*
@@ -927,4 +927,44 @@ void usingLate() {
   final myMeal = Meal();
   myMeal.description = 'Feijoada!';
   print(myMeal.description);
+}
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-late-circular-references
+*/
+class Team {
+  late final Coach coach;
+}
+
+class Coach {
+  late final Team team;
+}
+
+void lateCircularReferences() {
+  final myTeam = Team();
+  final myCoach = Coach();
+  myTeam.coach = myCoach;
+  myCoach.team = myTeam;
+
+  print('All done!');
+}
+
+/*
+  https://dart.dev/codelabs/null-safety#exercise-late-and-lazy
+*/
+int _computeValue() {
+  print('In _computeValue...');
+  return 3;
+}
+
+class CachedValueProvider {
+  late final _cache = _computeValue();
+  int get value => _cache;
+}
+
+void lateAndLazy() {
+  print('Calling constructor...');
+  var provider = CachedValueProvider();
+  print('Getting value...');
+  print('The value is ${provider.value}!');
 }
