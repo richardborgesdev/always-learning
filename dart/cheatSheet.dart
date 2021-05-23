@@ -966,7 +966,7 @@ void lateAndLazy() {
 }
 
 /*
-  https://dart.dev/guides/language/extension-methods
+  https://dart.dev/guides/language/extension-methods#using-extension-methods
 */
 extension NumberParsing on String {
   int parseInt() {
@@ -979,6 +979,17 @@ void extensionMethods() {
   print('42'.parseInt()); // Use an extension method.
 }
 
+/*
+  https://dart.dev/guides/language/extension-methods#static-types-and-dynamic
+*/
+void staticTypesAndDynamic() {
+  var v = '2';
+  print(v.parseInt()); // Output: 2
+
+  dynamic d = '2';
+  print(d.parseInt()); // Runtime exception: NoSuchMethodError
+}
+
 void main() {
-  extensionMethods();
+  staticTypesAndDynamic();
 }
