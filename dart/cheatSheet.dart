@@ -1,7 +1,3 @@
-void main() {
-  lateCircularReferences();
-}
-
 /*
   https://dart.dev/codelabs/dart-cheatsheet#string-interpolation
 */
@@ -967,4 +963,22 @@ void lateAndLazy() {
   var provider = CachedValueProvider();
   print('Getting value...');
   print('The value is ${provider.value}!');
+}
+
+/*
+  https://dart.dev/guides/language/extension-methods
+*/
+extension NumberParsing on String {
+  int parseInt() {
+    return int.parse(this);
+  }
+}
+
+void extensionMethods() {
+  print('42'.padLeft(5)); // Use a String method.
+  print('42'.parseInt()); // Use an extension method.
+}
+
+void main() {
+  extensionMethods();
 }
