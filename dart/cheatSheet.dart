@@ -990,6 +990,24 @@ void staticTypesAndDynamic() {
   print(d.parseInt()); // Runtime exception: NoSuchMethodError
 }
 
+/*
+  https://dart.dev/guides/language/extension-methods#implementing-extension-methods
+*/
+extension NumberParsing2 on String {
+  int parseInt2() {
+    return int.parse(this);
+  }
+
+  double parseDouble2() {
+    return double.parse(this);
+  }
+}
+
+void implementingExtensionMethods() {
+  print('23'.parseInt2());
+  print('23.5'.parseDouble2());
+}
+
 void main() {
-  staticTypesAndDynamic();
+  implementingExtensionMethods();
 }
