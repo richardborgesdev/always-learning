@@ -1008,6 +1008,23 @@ void implementingExtensionMethods() {
   print('23.5'.parseDouble2());
 }
 
+/*
+  https://dart.dev/guides/language/extension-methods#implementing-generic-extensions
+*/
+extension MyFancyList<T> on List<T> {
+  int get doubleLength => length * 2;
+  List<T> operator -() => reversed.toList();
+  List<List<T>> split(int at) => [sublist(0, at), sublist(at)];
+}
+
+void implementingGenericExtensions() {
+  List<String> stringList = ['abc', 'def', 'ghi'];
+  
+  print(stringList.doubleLength);
+  print(-stringList);
+  print(stringList.split(2));
+}
+
 void main() {
-  implementingExtensionMethods();
+  implementingGenericExtensions();
 }
