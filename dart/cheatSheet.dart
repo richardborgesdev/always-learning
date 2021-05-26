@@ -1,3 +1,5 @@
+import "dart:math";
+
 /*
   https://dart.dev/codelabs/dart-cheatsheet#string-interpolation
 */
@@ -1025,6 +1027,18 @@ void implementingGenericExtensions() {
   print(stringList.split(2));
 }
 
+/*
+  https://dart.dev/guides/language/numbers#precision
+*/
+void precision() {
+  print(pow(2, 53)); // native: 9007199254740992
+  print(pow(2, 53)); // web: 9007199254740992
+
+  print(pow(2, 63)); // native: 9007199254740992
+  print(pow(2, 63)); // != web: 9223372036854776000
+
+}
+
 void main() {
-  implementingGenericExtensions();
+  precision();
 }
