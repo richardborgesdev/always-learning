@@ -1036,7 +1036,14 @@ void precision() {
 
   print(pow(2, 63)); // native: 9007199254740992
   print(pow(2, 63)); // != web: 9223372036854776000
+}
 
+/*
+  https://dart.dev/guides/language/numbers#identity
+*/
+void identity() {
+  print(1.0 == 1); // native: true, web: true
+  print(identical(1.0, 1)); // native: false, web: true
 }
 
 void main() {
