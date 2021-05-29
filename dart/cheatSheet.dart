@@ -1046,6 +1046,14 @@ void identity() {
   print(identical(1.0, 1)); // native: false, web: true
 }
 
+/*
+  https://dart.dev/guides/language/numbers#types-and-type-checking
+*/
+void typesAndTypeChecking() {
+  print(1 is int); // native: true, web: true
+  print(1 is double); // native: false, web true
+}
+
 void main() {
   precision();
 }
