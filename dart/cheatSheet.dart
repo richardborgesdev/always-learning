@@ -1054,6 +1054,15 @@ void typesAndTypeChecking() {
   print(1 is double); // native: false, web true
 }
 
+/*
+  https://dart.dev/guides/language/numbers#bitwise-operations
+*/
+
+void bitwiseOperations() {
+  print(-1 >> 0); // native: -1, web: 4294967295
+  print(-1 ^ 2); // native: -3, web: 4294967293
+}
+
 void main() {
   precision();
 }
