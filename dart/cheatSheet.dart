@@ -1063,6 +1063,14 @@ void bitwiseOperations() {
   print(-1 ^ 2); // native: -3, web: 4294967293
 }
 
+/*
+  https://dart.dev/guides/language/numbers#string-representation
+*/
+void stringRepresentation() {
+  print(1.toString()); // native: "1", web: "1"
+  print(1.0.toString()); // native: "1.0", web: "1"
+}
+
 void main() {
-  precision();
+  stringRepresentation();
 }
