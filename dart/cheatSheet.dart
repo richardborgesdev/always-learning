@@ -1071,6 +1071,20 @@ void stringRepresentation() {
   print(1.0.toString()); // native: "1.0", web: "1"
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#variables
+*/
+void variables() {
+  var nameVar = 'Bob';
+  print(nameVar);
+
+  Object nameObj = 'Bob';
+  print(nameObj);
+
+  String nameString = 'Bob';
+  print(nameString);
+}
+
 void main() {
-  stringRepresentation();
+  variables();
 }
