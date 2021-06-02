@@ -1085,6 +1085,25 @@ void variables() {
   print(nameString);
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#default-value
+*/
+void defaultValue() {
+  int? lineCount;
+  assert(lineCount == null);
+
+  int lineCountWithoutDefault;
+  bool weLikeToCount = false;
+
+  if (weLikeToCount) {
+    lineCountWithoutDefault = 10;
+  } else {
+    lineCountWithoutDefault = 0;
+  }
+
+  print(lineCountWithoutDefault);
+}
+
 void main() {
-  variables();
+  defaultValue();
 }
