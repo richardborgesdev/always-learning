@@ -1104,6 +1104,23 @@ void defaultValue() {
   print(lineCountWithoutDefault);
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#late-variables
+*/
+late String description;
+
+String _readThermometer() {
+  return 'expensive function';
+}
+
+void lateVariables() {
+  description = 'Feijoada!';
+  print(description);
+
+  // This is the program's only call to _readThermometer().
+  late String temperature = _readThermometer(); // Lazily initialized.
+}
+
 void main() {
-  defaultValue();
+  lateVariables();
 }
