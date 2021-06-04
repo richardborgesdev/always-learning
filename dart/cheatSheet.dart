@@ -1121,6 +1121,23 @@ void lateVariables() {
   late String temperature = _readThermometer(); // Lazily initialized.
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#final-and-const
+*/
+void finalAndConst() {
+  const Object i = 3; // Where i is a const Object with an int value...
+  print(i);
+
+  const list = [i as int]; // Use a typecast.
+  print(list);
+
+  const map = {if (i is int) i: 'int'}; // Use is and collection if.
+  print(map);
+
+  const set = {if (list is List<int>) ...list}; // ...and a spread.
+  print(set);
+}
+
 void main() {
-  lateVariables();
+  finalAndConst();
 }
