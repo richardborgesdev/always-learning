@@ -1138,6 +1138,30 @@ void finalAndConst() {
   print(set);
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#numbers
+*/
+
+void numbers() {
+  var x = 1;
+  print(x);
+
+  var hex = 0xDEADBEEF;
+  print(hex);
+
+  var exponent = 8e5;
+  print(exponent);
+
+  print(3 << 1);
+  assert((3 << 1) == 6); // 0011 << 1 == 0110
+
+  print(3 >> 1);
+  assert((3 >> 1) == 1); // 0011 >> 1 == 0001
+
+  print(3 | 4);
+  assert((3 | 4) == 7); // 0011 | 0100 == 0111
+}
+
 void main() {
-  finalAndConst();
+  numbers();
 }
