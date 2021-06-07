@@ -1198,6 +1198,27 @@ void fff() {
   // const invalidConstString = '$aNum $aBool $aString $aConstList';
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#booleans
+*/
+void booleans() {
+  // Check for an empty string.
+  var fullName = '';
+  assert(fullName.isEmpty);
+
+  // Check for zero.
+  var hitPoints = 0;
+  assert(hitPoints <= 0);
+
+  // Check for null.
+  var unicorn;
+  assert(unicorn == null);
+
+  // Check for NaN.
+  var iMeantToDoThis = 0 / 0;
+  assert(iMeantToDoThis.isNaN);
+}
+
 void main() {
-  numbers();
+  booleans();
 }
