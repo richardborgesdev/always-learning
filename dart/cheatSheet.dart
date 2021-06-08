@@ -1219,6 +1219,36 @@ void booleans() {
   assert(iMeantToDoThis.isNaN);
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#lists
+*/
+void lists() {
+  var spreadOperatorList = [1, 2, 3];
+  var spreadOperatorList2 = [0, ...spreadOperatorList];
+  assert(spreadOperatorList2.length == 4);
+
+  var nullAwareSpreadOperatorList;
+  var nullAwareSpreadOperatorList2 = [0, ...?nullAwareSpreadOperatorList];
+  assert(nullAwareSpreadOperatorList2.length == 1);
+
+  var promoActive = true;
+
+  var collectionIfList = [
+    'Home',
+    'Furniture',
+    'Plants',
+    if (promoActive) 'Outlet'
+  ];
+  assert(collectionIfList.length == 3);
+
+  var collectionForListOfInts = [1, 2, 3];
+  var collectionForListOfStrings = [
+    '#0',
+    for (var i in collectionForListOfInts) '#$i'
+  ];
+  assert(collectionForListOfStrings[1] == '#1');
+}
+
 void main() {
-  booleans();
+  lists();
 }
