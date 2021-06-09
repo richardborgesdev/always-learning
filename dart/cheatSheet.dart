@@ -1249,6 +1249,31 @@ void lists() {
   assert(collectionForListOfStrings[1] == '#1');
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#sets
+*/
+void sets() {
+  var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'}; // Set<String>
+
+  var names = <String>{};
+  // Set<String> names = {}; // This works, too.
+  // var names = {}; // Creates a map, not a set.
+
+  var elements = <String>{};
+  elements.add('fluorine');
+  elements.addAll(halogens);
+  assert(elements.length == 5);
+
+  final constantSet = const {
+    'fluorine',
+    'chlorine',
+    'bromine',
+    'iodine',
+    'astatine',
+  };
+  // constantSet.add('helium'); // This line will cause an error.
+}
+
 void main() {
   lists();
 }
