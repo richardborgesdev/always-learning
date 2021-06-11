@@ -1,4 +1,5 @@
 import "dart:math";
+import 'package:characters/characters.dart';
 
 /*
   https://dart.dev/codelabs/dart-cheatsheet#string-interpolation
@@ -1308,6 +1309,16 @@ void maps() {
   };
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#runes-and-grapheme-clusters
+*/
+void runesAndGraphemeClusters() {
+  var hi = 'Hi 🇩🇰';
+  print(hi);
+  print('The end of the string: ${hi.substring(hi.length - 1)}');
+  print('The last character: ${hi.characters.last}\n');
+}
+
 void main() {
-  maps();
+  runesAndGraphemeClusters();
 }
