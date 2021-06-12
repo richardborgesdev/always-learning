@@ -1319,6 +1319,14 @@ void runesAndGraphemeClusters() {
   print('The last character: ${hi.characters.last}\n');
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#symbols
+*/
+void symbols() {
+  print(#radix);
+  print(#bar);
+}
+
 void main() {
-  runesAndGraphemeClusters();
+  symbols();
 }
