@@ -1327,6 +1327,19 @@ void symbols() {
   print(#bar);
 }
 
+/*
+  https://dart.dev/guides/language/language-tour#parameters
+*/
+void parameters() {
+  // not required named parameters
+  void enableFlags({bool? bold, bool? hidden}) => print('$bool, $hidden');
+  enableFlags(bold: true, hidden: false);
+  // Tip: If a parameter is optional but can’t be null, provide a default value.
+
+  // optional positional parameters
+  // ...
+}
+
 void main() {
   symbols();
 }
