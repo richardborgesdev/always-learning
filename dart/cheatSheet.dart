@@ -1337,7 +1337,17 @@ void parameters() {
   // Tip: If a parameter is optional but can’t be null, provide a default value.
 
   // optional positional parameters
-  // ...
+  String say(String from, String msg, [String? device]) {
+    var result = '$from says $msg';
+
+    if (device != null) {
+      result = '$result with a $device';
+    }
+      return result;
+  }
+
+  assert(say('Bob', 'Howdy') == 'Bob says Howdy');
+  assert(say('Bob', 'Howdy', 'smoke signal') == 'Bob says Howdy with a smoke signal');
 }
 
 void main() {
