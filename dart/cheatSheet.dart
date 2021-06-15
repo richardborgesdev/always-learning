@@ -1348,8 +1348,37 @@ void parameters() {
 
   assert(say('Bob', 'Howdy') == 'Bob says Howdy');
   assert(say('Bob', 'Howdy', 'smoke signal') == 'Bob says Howdy with a smoke signal');
+
+  // default parameters
+  // Sets the [bold] and [hidden] flags ...
+  void enableFlagsWithDefaultParameters({bool bold = false, bool hidden = false}) => print('$bold, $hidden');
+
+  // bold will be true; hidden will be false.
+  enableFlagsWithDefaultParameters(bold: true);
+
+  String sayWithDefaultParameters(String from, String msg, [String device = 'carrier pigeon']) {
+    var result = '$from says $msg with a $device';
+
+    return result;
+  }
+
+  assert(sayWithDefaultParameters('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
+
+  // Lists default parameters
+  void doStuff(
+    {List<int> list = const [1, 2, 3],
+    Map<String, String> gifts = const {
+      'first': 'paper',
+      'second': 'cotton',
+      'third': 'leather'
+    }}) {
+    print('list:  $list');
+    print('gifts: $gifts');
+  }
+
+  doStuff();
 }
 
 void main() {
-  symbols();
+  parameters();
 }
