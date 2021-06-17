@@ -1380,6 +1380,24 @@ void parameters() {
 }
 
 /*
+  https://dart.dev/guides/language/language-tour#functions-as-first-class-objects
+*/
+void functionsAsFirstClassObjects() {
+  void printElement(int element) {
+    print(element);
+  }
+
+  var list = [1, 2, 3];
+
+  // Pass printElement as a parameter.
+  list.forEach(printElement);
+
+  // function to a variable
+  var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
+  assert(loudify('hello') == '!!! HELLO !!!');
+}
+
+/*
   https://dart.dev/guides/language/language-tour#the-main-function
 */
 // Run the app like this: dart args.dart 1 test
@@ -1389,4 +1407,7 @@ void main(List<String> arguments) {
   assert(arguments.length == 2);
   assert(int.parse(arguments[0]) == 1);
   assert(arguments[1] == 'test');
+
+  /* --- */
+  functionsAsFirstClassObjects();
 }
