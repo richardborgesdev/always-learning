@@ -1398,9 +1398,22 @@ void functionsAsFirstClassObjects() {
 }
 
 /*
-  https://dart.dev/guides/language/language-tour#the-main-function
+  https://dart.dev/guides/language/language-tour#anonymous-functions
 */
-// Run the app like this: dart args.dart 1 test
+void anonymousFunctions() {
+  const list = ['apples', 'bananas', 'oranges'];
+
+  list.forEach((item) {
+    print('${list.indexOf(item)}: $item');
+  });
+  // or
+  list.forEach((item) => print('${list.indexOf(item)}: $item'));
+}
+
+/*
+  https://dart.dev/guides/language/language-tour#the-main-function
+  Run the app like this: dart args.dart 1 test
+*/
 void main(List<String> arguments) {
   print(arguments);
 
@@ -1409,5 +1422,5 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  functionsAsFirstClassObjects();
+  anonymousFunctions();
 }
