@@ -1411,6 +1411,28 @@ void anonymousFunctions() {
 }
 
 /*
+  https://dart.dev/guides/language/language-tour#lexical-scope
+*/
+bool topLevel = true;
+
+void lexicalScope() {
+    var insideMain = true;
+
+  void myFunction() {
+    var insideFunction = true;
+
+    void nestedFunction() {
+      var insideNestedFunction = true;
+
+      assert(topLevel);
+      assert(insideMain);
+      assert(insideFunction);
+      assert(insideNestedFunction);
+    }
+  }
+}
+
+/*
   https://dart.dev/guides/language/language-tour#the-main-function
   Run the app like this: dart args.dart 1 test
 */
@@ -1422,5 +1444,5 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  anonymousFunctions();
+  lexicalScope();
 }
