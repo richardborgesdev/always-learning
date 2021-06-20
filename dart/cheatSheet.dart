@@ -1433,6 +1433,24 @@ void lexicalScope() {
 }
 
 /*
+  https://dart.dev/guides/language/language-tour#lexical-closures
+*/
+void lexicalClosures() {
+  Function makeAdder(int addBy) {
+    return (int i) => addBy + i;
+  }
+
+  // Create a function that adds 2.
+  var add2 = makeAdder(2);
+
+  // Create a function that adds 4.
+  var add4 = makeAdder(4);
+
+  assert(add2(3) == 5);
+  assert(add4(3) == 7);
+}
+
+/*
   https://dart.dev/guides/language/language-tour#the-main-function
   Run the app like this: dart args.dart 1 test
 */
@@ -1444,5 +1462,5 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  lexicalScope();
+  lexicalClosures();
 }
