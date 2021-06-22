@@ -1487,6 +1487,16 @@ void testingFunctionsForEquality() {
 }
 
 /*
+  https://dart.dev/guides/language/language-tour#return-values
+*/
+void returnValues() {
+  foo() {}
+
+  // If no return value is specified, the statement return null
+  assert(foo() == null);
+}
+
+/*
   https://dart.dev/guides/language/language-tour#the-main-function
   Run the app like this: dart args.dart 1 test
 */
