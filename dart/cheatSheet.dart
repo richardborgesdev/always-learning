@@ -1497,6 +1497,26 @@ void returnValues() {
 }
 
 /*
+  https://dart.dev/guides/language/language-tour#operators
+*/
+void operators() {
+  /*
+    a++
+    a + b
+    a = b
+    a == b
+    c ? a : b
+    a is T
+
+    // Parentheses improve readability.
+    if ((n % i == 0) && (d % i == 0)) ...
+
+    // Harder to read, but equivalent.
+    if (n % i == 0 && d % i == 0) ...
+  */
+}
+
+/*
   https://dart.dev/guides/language/language-tour#the-main-function
   Run the app like this: dart args.dart 1 test
 */
