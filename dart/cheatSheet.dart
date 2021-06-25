@@ -1547,10 +1547,18 @@ void arithmeticOperators() {
   assert(a != b); // -1 != 0
 }
 
-/*
-  https://dart.dev/guides/language/language-tour#the-main-function
-  Run the app like this: dart args.dart 1 test
-*/
+// https://dart.dev/guides/language/language-tour#equality-and-relational-operators
+void equalityAndRelationalOperators() {
+  assert(2 == 2);
+  assert(2 != 3);
+  assert(3 > 2);
+  assert(2 < 3);
+  assert(3 >= 3);
+  assert(2 <= 3);
+}
+
+// https://dart.dev/guides/language/language-tour#the-main-function
+// Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
   print(arguments);
 
