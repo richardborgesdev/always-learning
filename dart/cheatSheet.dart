@@ -1557,6 +1557,25 @@ void equalityAndRelationalOperators() {
   assert(2 <= 3);
 }
 
+// https://dart.dev/guides/language/language-tour#type-test-operators
+class PersonTypeCastExample{
+  String? firstName;
+
+  PersonTypeCastExample({ this.firstName, });
+}
+
+void typeTestOperators() {
+  var employee;
+
+  // sure
+  (employee as PersonTypeCastExample).firstName = 'Bob';
+
+  // NOT sure
+  if (employee is Person) {
+    employee.firstName = 'Bob';
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
