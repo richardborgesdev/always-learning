@@ -1576,6 +1576,21 @@ void typeTestOperators() {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#assignment-operators
+void assignmentOperators(value) {
+  var a;
+  var  b;
+  // Assign value to a
+  a = value;
+  // Assign value to b if b is null; otherwise, b stays the same
+  b ??= value;
+
+  a = 2; // Assign using =
+  a *= 3; // Assign and multiply: a = a * 3
+  assert(a == 6);
+  print('$a, $b');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
