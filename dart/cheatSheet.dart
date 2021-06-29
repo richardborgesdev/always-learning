@@ -1595,10 +1595,23 @@ void assignmentOperators(value) {
 void logicalOperators() {
   var done;
   var col;
-  
+
   if (!done && (col == 0 || col == 3)) {
-  // ...Do something...
+    // ...Do something...
+  }
 }
+
+// https://dart.dev/guides/language/language-tour#bitwise-and-shift-operators
+void bitwiseAndShiftOperators() {
+  final value = 0x22;
+  final bitmask = 0x0f;
+
+  assert((value & bitmask) == 0x02); // AND
+  assert((value & ~bitmask) == 0x20); // AND NOT
+  assert((value | bitmask) == 0x2f); // OR
+  assert((value ^ bitmask) == 0x2d); // XOR
+  assert((value << 4) == 0x220); // Shift left
+  assert((value >> 4) == 0x02); // Shift right
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
@@ -1611,5 +1624,5 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  lexicalClosures();
+  bitwiseAndShiftOperators();
 }
