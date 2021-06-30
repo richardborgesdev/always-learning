@@ -1614,6 +1614,25 @@ void bitwiseAndShiftOperators() {
   assert((value >> 4) == 0x02); // Shift right
 }
 
+// https://dart.dev/guides/language/language-tour#conditional-expressions
+void conditionalExpressions(bool isPublic) {
+  var visibility = isPublic ? 'public' : 'private';
+
+  String playerNameNullishCoalescing(String? name) => name ?? 'Guest';
+
+  // Slightly longer version uses ?: operator.
+  String playerNameWithTernary(String? name) => name != null ? name : 'Guest';
+
+  // Very long version uses if-else statement.
+  String playerNameWithIfElse(String? name) {
+    if (name != null) {
+      return name;
+    } else {
+      return 'Guest';
+    }
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
