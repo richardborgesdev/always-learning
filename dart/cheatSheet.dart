@@ -1633,6 +1633,30 @@ void conditionalExpressions(bool isPublic) {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#cascade-notation
+class Paint {
+  String color = '';
+  int strokeCap = 0;
+  double strokeWidth = 0.0;
+}
+
+class Colors {
+  static String black = '000000';
+}
+
+class StrokeCap {
+  static int round = 1;
+}
+
+void cascadeNotation() {
+  var paint = Paint()
+  ..color = Colors.black
+  ..strokeCap = StrokeCap.round
+  ..strokeWidth = 5.0;
+
+  print(paint.color);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1643,5 +1667,5 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  bitwiseAndShiftOperators();
+  cascadeNotation();
 }
