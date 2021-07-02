@@ -1655,6 +1655,24 @@ void cascadeNotation() {
   ..strokeWidth = 5.0;
 
   print(paint.color);
+
+  // null-shorting cascade
+
+  // querySelector('#confirm') // Get an object.
+  // ?..text = 'Confirm' // Use its members.
+  // ..classes.add('important')
+  // ..onClick.listen((e) => window.alert('Confirmed!'));
+
+  // nest cascade
+
+  // final addressBook = (AddressBookBuilder()
+  //     ..name = 'jenny'
+  //     ..email = 'jenny@example.com'
+  //     ..phone = (PhoneNumberBuilder()
+  //           ..number = '415-555-0100'
+  //           ..label = 'home')
+  //         .build())
+  //   .build();
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
