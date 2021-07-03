@@ -1675,6 +1675,32 @@ void cascadeNotation() {
   //   .build();
 }
 
+// https://dart.dev/guides/language/language-tour#if-and-else
+bool isRaining() => true;
+bool isSnowing() => true;
+
+class Cloth {
+  void bringRainCoat() => print('bringRainCoat');
+  void wearJacket() => print('wearJacket');
+}
+
+class CarAccesories {
+  void putTopDown() => print('putTopDown');
+}
+
+Cloth you = new Cloth();
+CarAccesories car = new CarAccesories();
+
+void ifAndElse() {
+  if (isRaining()) {
+    you.bringRainCoat();
+  } else if (isSnowing()) {
+    you.wearJacket();
+  } else {
+    car.putTopDown();
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1685,5 +1711,5 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  cascadeNotation();
+  ifAndElse();
 }
