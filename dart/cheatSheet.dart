@@ -1701,6 +1701,33 @@ void ifAndElse() {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#for-loops
+class Candidate {
+  void interview() => print('interview');
+}
+
+void forLoops() {
+  var message = StringBuffer('Dart is fun');
+  for (var i = 0; i < 5; i++) {
+    message.write('!');
+  }
+
+  var callbacks = [];
+  for (var i = 0; i < 2; i++) {
+    callbacks.add(() => print(i));
+  }
+  callbacks.forEach((c) => c());
+
+  Candidate c1 = new Candidate();
+  List<Candidate> candidates = [c1];
+  for (var candidate in candidates) {
+    candidate.interview();
+  }
+
+  var collection = [1, 2, 3];
+  collection.forEach(print); // 1 2 3
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1711,5 +1738,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  ifAndElse();
+  print('forLoops');
+  forLoops();
 }
