@@ -1728,6 +1728,22 @@ void forLoops() {
   collection.forEach(print); // 1 2 3
 }
 
+// https://dart.dev/guides/language/language-tour#while-and-do-while
+bool isDone() => true;
+void doSomething() => print('doSomething');
+void printLine() => print('line');
+bool atEndOfPage() => true;
+
+void whileDoWhile() {
+  while (!isDone()) {
+    doSomething();
+  }
+
+  do {
+    printLine();
+  } while (!atEndOfPage());
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1738,6 +1754,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  print('forLoops');
-  forLoops();
+  print('whileDoWhile');
+  whileDoWhile();
 }
