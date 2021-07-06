@@ -1704,6 +1704,7 @@ void ifAndElse() {
 // https://dart.dev/guides/language/language-tour#for-loops
 class Candidate {
   void interview() => print('interview');
+  int yearsExperience = 4;
 }
 
 void forLoops() {
@@ -1742,6 +1743,32 @@ void whileDoWhile() {
   do {
     printLine();
   } while (!atEndOfPage());
+}
+
+// https://dart.dev/guides/language/language-tour#break-and-continue
+bool shutDownRequested() => true;
+void processIncomingRequests() => print('processIncomingRequests');
+
+void breakAndContinue() {
+  while (true) {
+    if (shutDownRequested()) break;
+    processIncomingRequests();
+  }
+
+  Candidate c1 = new Candidate();
+  List<Candidate> candidates = [c1];
+  for (int i = 0; i < candidates.length; i++) {
+    var candidate = candidates[i];
+    if (candidate.yearsExperience < 5) {
+      continue;
+    }
+    candidate.interview();
+  }
+
+  // iterable or set
+  candidates
+    .where((c) => c.yearsExperience >= 5)
+    .forEach((c) => c.interview());
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
