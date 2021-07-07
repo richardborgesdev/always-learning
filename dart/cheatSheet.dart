@@ -1771,6 +1771,53 @@ void breakAndContinue() {
     .forEach((c) => c.interview());
 }
 
+// https://dart.dev/guides/language/language-tour#switch-and-case
+void switchCase() {
+  var command = 'OPEN';
+  switch (command) {
+    case 'CLOSED':
+      // executeClosed();
+      break;
+    case 'PENDING':
+      // executePending();
+      break;
+    case 'APPROVED':
+      // executeApproved();
+      break;
+    case 'DENIED':
+      // executeDenied();
+      break;
+    case 'OPEN':
+      // executeOpen();
+      break;
+    default:
+      // executeUnknown();
+  }
+
+  command = 'CLOSED';
+  switch (command) {
+    case 'CLOSED': // Empty case falls through.
+    case 'NOW_CLOSED':
+      // Runs for both CLOSED and NOW_CLOSED.
+      // executeNowClosed();
+      break;
+  }
+
+  command = 'CLOSED';
+  switch (command) {
+    case 'CLOSED':
+      // executeClosed();
+      continue nowClosed;
+    // Continues executing at the nowClosed label.
+
+    nowClosed:
+    case 'NOW_CLOSED':
+      // Runs for both CLOSED and NOW_CLOSED.
+      // executeNowClosed();
+      break;
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
