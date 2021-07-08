@@ -1818,6 +1818,23 @@ void switchCase() {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#assert
+void assertsExample() {
+  // Make sure the variable has a non-null value.
+  String ?text;
+  assert(text != null, text);
+
+  // Make sure the value is less than 100.
+  int number = 10;
+  assert(number < 100, number);
+
+  // Make sure this is an https URL.
+  String urlString = 'https://dart.dev/guides/language/language-tour#assert';
+  assert(urlString.startsWith('https'), urlString);
+
+  assert(urlString.startsWith('https'), 'URL ($urlString) should start with "https".');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1828,6 +1845,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  print('whileDoWhile');
-  whileDoWhile();
+  print('assertsExample');
+  assertsExample();
 }
