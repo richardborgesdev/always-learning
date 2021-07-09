@@ -1835,6 +1835,12 @@ void assertsExample() {
   assert(urlString.startsWith('https'), 'URL ($urlString) should start with "https".');
 }
 
+// https://dart.dev/guides/language/language-tour#throw
+void throwExamples() {
+  throw FormatException('Expected at least 1 section');
+  // throw 'Out of llamas!';
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1845,6 +1851,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  print('assertsExample');
-  assertsExample();
+  print('throwExamples');
+  throwExamples();
 }
