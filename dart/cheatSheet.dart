@@ -1841,6 +1841,49 @@ void throwExamples() {
   // throw 'Out of llamas!';
 }
 
+// https://dart.dev/guides/language/language-tour#catch
+void misbehave() {
+  try {
+    dynamic foo = true;
+    print(foo++); // Runtime error
+  } catch (e) {
+    print('misbehave() partially handled ${e.runtimeType}.');
+    rethrow; // Allow callers to see the exception.
+  }
+}
+
+void catchExample() {
+  /*
+    try {
+      breedMoreLlamas();
+    } on OutOfLlamasException {
+      // A specific exception
+      buyMoreLlamas();
+    } on Exception catch (e) {
+      // Anything else that is an exception
+      print('Unknown exception: $e');
+    } catch (e) {
+      // No specified type, handles all
+      print('Something really unknown: $e');
+    }
+  */
+
+  try {
+    // ···
+  } on Exception catch (e) {
+    print('Exception details:\n $e');
+  } catch (e, s) {
+    print('Exception details:\n $e');
+    print('Stack trace:\n $s');
+  }
+
+  try {
+    misbehave();
+  } catch (e) {
+    print('main() finished handling ${e.runtimeType}.');
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1851,6 +1894,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  print('throwExamples');
-  throwExamples();
+  print('catchExample');
+  catchExample();
 }
