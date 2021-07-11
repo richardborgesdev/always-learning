@@ -1884,6 +1884,17 @@ void catchExample() {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#finally
+void finallyExample() {
+  try {
+    // breedMoreLlamas();
+  } catch (e) {
+    // print('Error: $e'); // Handle the exception first.
+  } finally {
+    // cleanLlamaStalls(); // Then clean up.
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
