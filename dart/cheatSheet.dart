@@ -1895,6 +1895,20 @@ void finallyExample() {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#using-class-members
+void usingClassMembers() {
+  var p = Point(2, 2);
+
+  // Get the value of y.
+  assert(p.y == 2);
+
+  // Invoke distanceTo() on p.
+  double distance = p.distanceTo(Point(4, 4));
+
+  // If p is non-null, set a variable equal to its y value.
+  var a = p?.y;
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
