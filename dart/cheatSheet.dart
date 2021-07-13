@@ -1909,6 +1909,23 @@ void usingClassMembers() {
   var a = p?.y;
 }
 
+// https://dart.dev/guides/language/language-tour#using-constructors
+void constructors() {
+  var p1 = new Point(2, 2);
+  var p2 = new Point.fromJson({'x': 1, 'y': 2});
+
+  // Only one const, which establishes the constant context.
+  const pointAndLine = {
+    'point': [ImmutablePoint(0, 0)],
+    'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
+  };
+
+  var a = const ImmutablePoint(1, 1); // Creates a constant
+  var b = ImmutablePoint(1, 1); // Does NOT create a constant
+
+  assert(!identical(a, b)); // NOT the same instance!
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
