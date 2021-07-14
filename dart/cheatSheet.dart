@@ -1926,6 +1926,28 @@ void constructors() {
   assert(!identical(a, b)); // NOT the same instance!
 }
 
+// https://dart.dev/guides/language/language-tour#instance-variables
+class ProfileMark {
+  final String name;
+  final DateTime start = DateTime.now();
+
+  ProfileMark(this.name);
+  ProfileMark.unnamed() : name = '';
+}
+
+void instanceVariables() {
+  /*
+    class Point {
+      double? x; // Declare instance variable x, initially null.
+      double? y; // Declare y, initially null.
+      double z = 0; // Declare z, initially 0.
+    }
+  */
+
+  ProfileMark withoutName = ProfileMark.unnamed();
+  ProfileMark withName = ProfileMark('profile');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
