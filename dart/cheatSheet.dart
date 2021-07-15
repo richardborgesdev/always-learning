@@ -1948,6 +1948,46 @@ void instanceVariables() {
   ProfileMark withName = ProfileMark('profile');
 }
 
+// https://dart.dev/guides/language/language-tour#constructors
+class Point {
+  double x = 0;
+  double y = 0;
+
+  Point(double x, double y) {
+    // There's a better way to do this, stay tuned.
+    this.x = x;
+    this.y = y;
+  }
+}
+
+class Point2 {
+  double x = 0;
+  double y = 0;
+
+  // Syntactic sugar for setting x and y
+  // before the constructor body runs.
+  Point2(this.x, this.y);
+}
+
+const double xOrigin = 0;
+const double yOrigin = 0;
+
+class PointNamed {
+  double x = 0;
+  double y = 0;
+
+  PointNamed(this.x, this.y);
+
+  // Named constructor
+  PointNamed.origin()
+      : x = xOrigin,
+        y = yOrigin;
+}
+
+void constructorsExample() {
+  // ...
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
