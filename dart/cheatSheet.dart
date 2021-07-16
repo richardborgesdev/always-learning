@@ -1984,8 +1984,53 @@ class PointNamed {
         y = yOrigin;
 }
 
+class PersonSuper {
+  String? firstName;
+
+  PersonSuper.fromJson(Map data) {
+    print('in Person');
+  }
+}
+
+class Employee extends PersonSuper {
+  // PersonSuper does not have a default constructor;
+  // you must call super.fromJson(data).
+  Employee.fromJson(Map data) : super.fromJson(data) {
+    print('in Employee');
+  }
+}
+
+class LoggerFactory {
+  final String name;
+  bool mute = false;
+
+  // _cache is library-private, thanks to
+  // the _ in front of its name.
+  static final Map<String, LoggerFactory> _cache =
+      <String, LoggerFactory>{};
+
+  factory LoggerFactory(String name) {
+    return _cache.putIfAbsent(
+        name, () => LoggerFactory._internal(name));
+  }
+
+  factory LoggerFactory.fromJson(Map<String, Object> json) {
+    return LoggerFactory(json['name'].toString());
+  }
+
+  LoggerFactory._internal(this.name);
+
+  void log(String msg) {
+    if (!mute) print(msg);
+  }
+}
+
 void constructorsExample() {
-  // ...
+  var logger = LoggerFactory('UI');
+  logger.log('Button clicked');
+
+  var logMap = {'name': 'UI'};
+  var loggerJson = LoggerFactory.fromJson(logMap);
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
