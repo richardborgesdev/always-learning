@@ -2033,6 +2033,42 @@ void constructorsExample() {
   var loggerJson = LoggerFactory.fromJson(logMap);
 }
 
+// https://dart.dev/guides/language/language-tour#methods
+class PointInstanceExample {
+  double x = 0;
+  double y = 0;
+
+  PointInstanceExample(this.x, this.y);
+
+  double distanceTo(PointInstanceExample other) {
+    var dx = x - other.x;
+    var dy = y - other.y;
+    return sqrt(dx * dx + dy * dy);
+  }
+}
+
+// Operators
+class Vector {
+  final int x, y;
+
+  Vector(this.x, this.y);
+
+  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
+  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
+
+  // Operator == and hashCode not shown.
+  // ···
+}
+
+void methodsExample() {
+  // Operators
+  final v = Vector(2, 3);
+  final w = Vector(2, 2);
+
+  assert(v + w == Vector(4, 5));
+  assert(v - w == Vector(0, 1));
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
