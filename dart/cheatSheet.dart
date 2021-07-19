@@ -2089,6 +2089,19 @@ void methodsExample() {
   assert(rect.left == -8);
 }
 
+// Abstract methods
+abstract class Doer {
+  // Define instance variables and methods...
+
+  void doSomething(); // Define an abstract method.
+}
+
+class EffectiveDoer extends Doer {
+  void doSomething() {
+    // Provide an implementation, so the method is not abstract here...
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
