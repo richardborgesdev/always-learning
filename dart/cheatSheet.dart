@@ -2074,6 +2074,19 @@ class Rectangle {
   set bottom(double value) => top = value - height;
 }
 
+// Abstract methods
+abstract class Doer {
+  // Define instance variables and methods...
+
+  void doSomething(); // Define an abstract method.
+}
+
+class EffectiveDoer extends Doer {
+  void doSomething() {
+    // Provide an implementation, so the method is not abstract here...
+  }
+}
+
 void methodsExample() {
   // Operators
   final v = Vector(2, 3);
@@ -2089,17 +2102,13 @@ void methodsExample() {
   assert(rect.left == -8);
 }
 
-// Abstract methods
-abstract class Doer {
-  // Define instance variables and methods...
+// https://dart.dev/guides/language/language-tour#abstract-classes
+// This class is declared abstract and thus
+// can't be instantiated.
+abstract class AbstractContainer {
+  // Define constructors, fields, methods...
 
-  void doSomething(); // Define an abstract method.
-}
-
-class EffectiveDoer extends Doer {
-  void doSomething() {
-    // Provide an implementation, so the method is not abstract here...
-  }
+  void updateChildren(); // Abstract method.
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
