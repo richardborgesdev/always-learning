@@ -1903,7 +1903,7 @@ void usingClassMembers() {
   assert(p.y == 2);
 
   // Invoke distanceTo() on p.
-  double distance = p.distanceTo(Point(4, 4));
+  // double distance = p.distanceTo(Point(4, 4));
 
   // If p is non-null, set a variable equal to its y value.
   var a = p?.y;
@@ -1911,6 +1911,7 @@ void usingClassMembers() {
 
 // https://dart.dev/guides/language/language-tour#using-constructors
 void constructors() {
+  /*
   var p1 = new Point(2, 2);
   var p2 = new Point.fromJson({'x': 1, 'y': 2});
 
@@ -1924,6 +1925,7 @@ void constructors() {
   var b = ImmutablePoint(1, 1); // Does NOT create a constant
 
   assert(!identical(a, b)); // NOT the same instance!
+  */
 }
 
 // https://dart.dev/guides/language/language-tour#instance-variables
@@ -2111,6 +2113,33 @@ abstract class AbstractContainer {
   void updateChildren(); // Abstract method.
 }
 
+// https://dart.dev/guides/language/language-tour#implicit-interfaces
+// A person. The implicit interface contains greet().
+class PersonImplicitInterface {
+  // In the interface, but visible only in this library.
+  final String _name;
+
+  // Not in the interface, since this is a constructor.
+  PersonImplicitInterface(this._name);
+
+  // In the interface.
+  String greet(String who) => 'Hello, $who. I am $_name.';
+}
+
+// An implementation of the Person interface.
+class ImpostorImplicitInterface implements PersonImplicitInterface {
+  String get _name => '';
+
+  String greet(String who) => 'Hi $who. Do you know who I am?';
+}
+
+String greetBob(PersonImplicitInterface person) => person.greet('Bob');
+
+void implicitInterface() {
+  print(greetBob(PersonImplicitInterface('Kathy')));
+  print(greetBob(ImpostorImplicitInterface()));
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -2121,6 +2150,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  print('catchExample');
-  catchExample();
+  print('implicitInterface');
+  implicitInterface();
 }
