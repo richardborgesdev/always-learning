@@ -2140,6 +2140,36 @@ void implicitInterface() {
   print(greetBob(ImpostorImplicitInterface()));
 }
 
+// https://dart.dev/guides/language/language-tour#extending-a-class
+class Television {
+  void _illuminateDisplay() => print('_illuminateDisplay');
+  void _activateIrSensor() => print('_activateIrSensor');
+
+  void turnOn() {
+    _illuminateDisplay();
+    _activateIrSensor();
+  }
+}
+
+class SmartTelevision extends Television {
+  void turnOn() {
+    super.turnOn();
+    _bootNetworkInterface();
+    _initializeMemory();
+    _upgradeApps();
+  }
+
+  void _bootNetworkInterface() => print('_bootNetworkInterface');
+  void _initializeMemory() => print('_initializeMemory');
+  void _upgradeApps() => print('_upgradeApps');
+}
+
+// Overriding members
+class SmartTelevisionOverride extends Television {
+  @override
+  void turnOn() => print('override turn on');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
