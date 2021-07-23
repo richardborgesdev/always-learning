@@ -2170,6 +2170,17 @@ class SmartTelevisionOverride extends Television {
   void turnOn() => print('override turn on');
 }
 
+// noSuchMethod()
+class AWithNoSuchMethod {
+  // Unless you override noSuchMethod, using a
+  // non-existent member results in a NoSuchMethodError.
+  @override
+  void noSuchMethod(Invocation invocation) {
+    print('You tried to use a non-existent member: '
+        '${invocation.memberName}');
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
