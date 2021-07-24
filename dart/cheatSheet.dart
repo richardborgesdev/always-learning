@@ -2181,6 +2181,12 @@ class AWithNoSuchMethod {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#extension-methods
+// import 'string_apis.dart';
+
+// print('42'.padLeft(5)); // Use a String method.
+// print('42'.parseInt()); // Use an extension method.
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
