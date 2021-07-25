@@ -2187,6 +2187,31 @@ class AWithNoSuchMethod {
 // print('42'.padLeft(5)); // Use a String method.
 // print('42'.parseInt()); // Use an extension method.
 
+// https://dart.dev/guides/language/language-tour#enumerated-types
+enum ColorEnums { red, green, blue };
+
+void enumeratedTypes() {
+  assert(ColorEnums.red.index == 0);
+  assert(ColorEnums.green.index == 1);
+  assert(ColorEnums.blue.index == 2);
+
+  List<ColorEnums> colors = ColorEnums.values;
+  assert(colors[2] == ColorEnums.blue);
+
+  var aColor = ColorEnums.blue;
+
+  switch (aColor) {
+    case ColorEnums.red:
+      print('Red as roses!');
+      break;
+    case ColorEnums.green:
+      print('Green as grass!');
+      break;
+    default: // Without this, you see a WARNING.
+      print(aColor); // 'Color.blue'
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
