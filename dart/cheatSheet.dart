@@ -2264,6 +2264,17 @@ void AddingFeaturesToAClassMixins() {
   // ...
 }
 
+// https://dart.dev/guides/language/language-tour#class-variables-and-methods
+// static variables
+class Queue {
+  static const initialCapacity = 16;
+  // ···
+}
+
+void classVariablesAndMethods() {
+  assert(Queue.initialCapacity == 16);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -2274,6 +2285,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  print('implicitInterface');
-  implicitInterface();
+  print('classVariablesAndMethods');
+  classVariablesAndMethods();
 }
