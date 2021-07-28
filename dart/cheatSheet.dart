@@ -2265,7 +2265,7 @@ void AddingFeaturesToAClassMixins() {
 }
 
 // https://dart.dev/guides/language/language-tour#class-variables-and-methods
-// static variables
+// Static variables
 class Queue {
   static const initialCapacity = 16;
   // ···
@@ -2273,6 +2273,26 @@ class Queue {
 
 void classVariablesAndMethods() {
   assert(Queue.initialCapacity == 16);
+}
+
+// Static methods
+class PointStaticMethod {
+  double x, y;
+  PointStaticMethod(this.x, this.y);
+
+  static double distanceBetween(PointStaticMethod a, PointStaticMethod b) {
+    var dx = a.x - b.x;
+    var dy = a.y - b.y;
+    return sqrt(dx * dx + dy * dy);
+  }
+}
+
+void staticMethod() {
+  var a = PointStaticMethod(2, 2);
+  var b = PointStaticMethod(4, 4);
+  var distance = PointStaticMethod.distanceBetween(a, b);
+  assert(2.8 < distance && distance < 2.9);
+  print(distance);
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
