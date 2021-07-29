@@ -2295,6 +2295,28 @@ void staticMethod() {
   print(distance);
 }
 
+// https://dart.dev/guides/language/language-tour#generics
+abstract class ObjectCache {
+  Object getByKey(String key);
+  void setByKey(String key, Object value);
+}
+
+abstract class StringCache {
+  String getByKey(String key);
+  void setByKey(String key, String value);
+}
+
+abstract class Cache<T> {
+  T getByKey(String key);
+  void setByKey(String key, T value);
+}
+
+void generics() {
+  var names = <String>[];
+  names.addAll(['Seth', 'Kathy', 'Lars']);
+  // names.add(42); // Error
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
