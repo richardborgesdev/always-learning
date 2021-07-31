@@ -2332,6 +2332,20 @@ void usingCollectionLiterals() {
   print(pages);
 }
 
+// https://dart.dev/guides/language/language-tour#using-parameterized-types-with-constructors
+class View {
+  var position = 0;
+}
+
+void usingParameterizedTypesWithConstructors() {
+  var names = ['a'];
+  var nameSet = Set<String>.from(names);
+  print(nameSet);
+
+  var views = Map<int, View>();
+  print(views);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -2342,6 +2356,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  print('usingCollectionLiterals');
-  usingCollectionLiterals();
+  print('usingParameterizedTypesWithConstructors');
+  usingParameterizedTypesWithConstructors();
 }
