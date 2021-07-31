@@ -2188,7 +2188,7 @@ class AWithNoSuchMethod {
 // print('42'.parseInt()); // Use an extension method.
 
 // https://dart.dev/guides/language/language-tour#enumerated-types
-enum ColorEnums { red, green, blue };
+enum ColorEnums { red, green, blue }
 
 void enumeratedTypes() {
   assert(ColorEnums.red.index == 0);
@@ -2317,6 +2317,21 @@ void generics() {
   // names.add(42); // Error
 }
 
+// https://dart.dev/guides/language/language-tour#using-collection-literals
+void usingCollectionLiterals() {
+  var names = <String>['Seth', 'Kathy', 'Lars'];
+  var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
+  var pages = <String, String>{
+    'index.html': 'Homepage',
+    'robots.txt': 'Hints for web robots',
+    'humans.txt': 'We are people, not machines'
+  };
+
+  print(names);
+  print(uniqueNames);
+  print(pages);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -2327,6 +2342,6 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 
   /* --- */
-  print('classVariablesAndMethods');
-  classVariablesAndMethods();
+  print('usingCollectionLiterals');
+  usingCollectionLiterals();
 }
