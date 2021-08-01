@@ -2346,6 +2346,13 @@ void usingParameterizedTypesWithConstructors() {
   print(views);
 }
 
+// https://dart.dev/guides/language/language-tour#generic-collections-and-the-types-they-contain
+void genericCollectionsAndTheTypesTheyContain() {
+  var names = <String>[];
+  names.addAll(['Seth', 'Kathy', 'Lars']);
+  print(names is List<String>); // true
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
