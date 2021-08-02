@@ -2353,6 +2353,24 @@ void genericCollectionsAndTheTypesTheyContain() {
   print(names is List<String>); // true
 }
 
+// https://dart.dev/guides/language/language-tour#restricting-the-parameterized-type
+class SomeBaseClass {}
+
+class Foo<T extends SomeBaseClass> {
+  // Implementation goes here...
+  String toString() => "Instance of 'Foo<$T>'";
+}
+
+class Extender extends SomeBaseClass {}
+
+void restrictingTheParameterizedType() {
+  var someBaseClassFoo = Foo<SomeBaseClass>();
+  var extenderFoo = Foo<Extender>();
+
+  var foo = Foo();
+  print(foo); // Instance of 'Foo<SomeBaseClass>'
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
