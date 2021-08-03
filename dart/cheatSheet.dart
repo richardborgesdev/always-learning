@@ -2371,6 +2371,18 @@ void restrictingTheParameterizedType() {
   print(foo); // Instance of 'Foo<SomeBaseClass>'
 }
 
+// https://dart.dev/guides/language/language-tour#using-generic-methods
+T first<T>(List<T> ts) {
+  // Do some initial work or error checking, then...
+  T tmp = ts[0];
+  // Do some additional checking or processing...
+  return tmp;
+}
+
+void usingGenericMethods() {
+  // ...
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
