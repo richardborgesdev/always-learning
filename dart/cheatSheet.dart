@@ -2383,6 +2383,21 @@ void usingGenericMethods() {
   // ...
 }
 
+// https://dart.dev/guides/language/language-tour#using-libraries
+void usingLibraries() {
+  // Specifying a library prefix
+  /*
+    import 'package:lib1/lib1.dart';
+    import 'package:lib2/lib2.dart' as lib2;
+
+    // Uses Element from lib1.
+    Element element1 = Element();
+
+    // Uses Element from lib2.
+    lib2.Element element2 = lib2.Element();
+  */
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
