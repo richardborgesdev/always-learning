@@ -2406,16 +2406,14 @@ void usingLibraries() {
     import 'package:lib2/lib2.dart' hide foo;
   */
 
-  // Specifying a library prefix
+  // Lazily loading a library
   /*
-    import 'package:lib1/lib1.dart';
-    import 'package:lib2/lib2.dart' as lib2;
+    import 'package:greetings/hello.dart' deferred as hello;
 
-    // Uses Element from lib1.
-    Element element1 = Element();
-
-    // Uses Element from lib2.
-    lib2.Element element2 = lib2.Element();
+    Future<void> greet() async {
+      await hello.loadLibrary();
+      hello.printGreeting();
+    }
   */
 }
 
