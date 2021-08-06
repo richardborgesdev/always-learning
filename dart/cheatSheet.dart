@@ -2405,6 +2405,16 @@ void usingLibraries() {
     // Import all names EXCEPT foo.
     import 'package:lib2/lib2.dart' hide foo;
   */
+
+  // Lazily loading a library
+  /*
+    import 'package:greetings/hello.dart' deferred as hello;
+
+    Future<void> greet() async {
+      await hello.loadLibrary();
+      hello.printGreeting();
+    }
+  */
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
