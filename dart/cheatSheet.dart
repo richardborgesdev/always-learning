@@ -2418,10 +2418,6 @@ void usingLibraries() {
 }
 
 // https://dart.dev/guides/language/language-tour#asynchrony-support
-Future<bool> lookUpVersion() async {
-  return true;
-}
-
 Future<void> checkVersion() async {
   var version = await lookUpVersion();
   // Do something with version
@@ -2433,6 +2429,9 @@ void asynchronySupport() async {
     // React to inability to look up the version
   }
 }
+
+// https://dart.dev/guides/language/language-tour#declaring-async-functions
+Future<String> lookUpVersion() async => '1.0.0';
 
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
