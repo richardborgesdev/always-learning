@@ -2433,6 +2433,14 @@ void asynchronySupport() async {
 // https://dart.dev/guides/language/language-tour#declaring-async-functions
 Future<String> lookUpVersion() async => '1.0.0';
 
+// https://dart.dev/guides/language/language-tour#handling-streams
+void handlingStreams(Stream<String> requestServer) async {
+  await for (var request in requestServer) {
+    // Executes each time the stream emits a value.
+    // handleRequest(request);
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
