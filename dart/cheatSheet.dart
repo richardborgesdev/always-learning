@@ -2462,6 +2462,18 @@ Iterable<int> naturalsDownFrom(int n) sync* {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#callable-classes
+class WannabeFunction {
+  String call(String a, String b, String c) => '$a $b $c!';
+}
+
+void callableClasses() {
+  var wf = WannabeFunction();
+  var out = wf('Hi', 'there,', 'gang');
+
+  print(out);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
