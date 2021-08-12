@@ -2474,6 +2474,27 @@ void callableClasses() {
   print(out);
 }
 
+// https://dart.dev/guides/language/language-tour#isolates
+// see documentation
+
+// https://dart.dev/guides/language/language-tour#typedefs
+typedef Compare<T> = int Function(T a, T b);
+
+int sort(int a, int b) => a - b;
+
+void typefsExample() {
+  /*
+    typedef IntList = List<int>;
+    IntList il = [1, 2, 3];
+
+    typedef ListMapper<X> = Map<X, List<X>>;
+    Map<String, List<String>> m1 = {}; // Verbose.
+    ListMapper<String> m2 = {}; // Same thing but shorter and clearer.
+  */
+
+  assert(sort is Compare<int>); // True!
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
