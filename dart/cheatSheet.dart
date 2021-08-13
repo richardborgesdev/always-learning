@@ -2495,6 +2495,33 @@ void typefsExample() {
   assert(sort is Compare<int>); // True!
 }
 
+// https://dart.dev/guides/language/language-tour#metadata
+class TelevisionWithMetadata {
+  // Use [turnOn] to turn the power on instead.
+  @Deprecated('Use turnOn instead')
+  void activate() {
+    turnOn();
+  }
+
+  // Turns the TV's power on.
+  void turnOn() {}
+}
+
+// library todo;
+class Todo {
+  final String who;
+  final String what;
+
+  const Todo(this.who, this.what);
+}
+
+void metadataExample() {
+  @Todo('seth', 'make this do something')
+  void doSomething() {
+    print('do something');
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
