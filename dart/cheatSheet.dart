@@ -2522,6 +2522,12 @@ void metadataExample() {
   }
 }
 
+// https://dart.dev/guides/language/language-tour#single-line-comments
+void singleLineComments() {
+  // TODO: refactor into an AbstractLlamaGreetingFactory?
+  print('Welcome to my Llama farm!');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
