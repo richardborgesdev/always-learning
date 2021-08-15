@@ -2528,6 +2528,18 @@ void singleLineComments() {
   print('Welcome to my Llama farm!');
 }
 
+// https://dart.dev/guides/language/language-tour#multi-line-comments
+void multiLineComments() {
+    /*
+      * This is a lot of work. Consider raising chickens.
+
+      Llama larry = Llama();
+      larry.feed();
+      larry.exercise();
+      larry.clean();
+   */
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
