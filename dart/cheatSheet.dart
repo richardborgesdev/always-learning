@@ -2567,6 +2567,21 @@ class Llama {
   }
 }
 
+// https://dart.dev/guides/language/type-system
+void printInts(List<int> a) => print(a);
+
+void typeSystem() {
+  var list = [];
+  list.add(1);
+  list.add('2');
+  // printInts(list); // type error
+
+  var intList = <int>[];
+  intList.add(1);
+  intList.add(2);
+  printInts(intList);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
