@@ -2582,6 +2582,34 @@ void typeSystem() {
   printInts(intList);
 }
 
+// https://dart.dev/guides/language/type-system#what-is-soundness
+// important to read!!
+
+// https://dart.dev/guides/language/type-system#tips-for-passing-static-analysis
+// important to read!!
+
+// https://dart.dev/guides/language/type-system#use-sound-return-types-when-overriding-methods
+class Animal {
+  void chase(Animal a) {  }
+  Animal get parent => this.parent;
+}
+
+class HoneyBadger extends Animal {
+  @override
+  void chase(Animal a) { }
+
+  @override
+  HoneyBadger get parent => this.parent;
+}
+
+class HoneyBadgerWRONG extends Animal {
+  @override
+  void chase(Animal a) { }
+  
+  // @override
+  // Root get parent => this.parent; // error: root is not a subtype of Animal
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
