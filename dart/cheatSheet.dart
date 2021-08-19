@@ -2610,6 +2610,26 @@ class HoneyBadgerWRONG extends Animal {
   // Root get parent => this.parent; // error: root is not a subtype of Animal
 }
 
+// https://dart.dev/guides/language/type-system#use-sound-parameter-types-when-overriding-methods
+class HoneyBadgerWithObjectChase extends Animal {
+  @override
+  void chase(Object a) { }
+
+  @override
+  Animal get parent => this.parent;
+}
+
+class Mouse extends Animal { }
+
+class Cat extends Animal {
+  // @override
+  // void chase(Mouse x) { } // error: cat already extends Animal
+}
+/*
+  Animal wrongCatInstance = Cat();
+  wrongCatInstance.chase(Alligator()); // error: Not type safe or feline safe.
+*/
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
