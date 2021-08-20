@@ -2630,6 +2630,13 @@ class Cat extends Animal {
   wrongCatInstance.chase(Alligator()); // error: Not type safe or feline safe.
 */
 
+// https://dart.dev/guides/language/type-system#dont-use-a-dynamic-list-as-a-typed-list
+class Dog extends Animal {}
+void dontUseADynamicListAsATypedList() {
+  List<Cat> foo = <dynamic>[Dog()]; // Error
+  List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
