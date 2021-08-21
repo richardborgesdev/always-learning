@@ -2633,8 +2633,14 @@ class Cat extends Animal {
 // https://dart.dev/guides/language/type-system#dont-use-a-dynamic-list-as-a-typed-list
 class Dog extends Animal {}
 void dontUseADynamicListAsATypedList() {
-  List<Cat> foo = <dynamic>[Dog()]; // Error
+  // List<Cat> foo = <dynamic>[Dog()]; // Error
   List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
+}
+
+// https://dart.dev/guides/language/type-system#runtime-checks
+void runtimeChecks() {
+  List<Animal> animals = [Dog()];
+  List<Cat> cats = animals as List<Cat>; // runtime error
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
