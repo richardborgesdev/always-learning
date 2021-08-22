@@ -2643,6 +2643,12 @@ void runtimeChecks() {
   List<Cat> cats = animals as List<Cat>; // runtime error
 }
 
+// https://dart.dev/guides/language/type-system#type-inference
+void typeInference() {
+  Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42}; // explicit type
+  var arguments = {'argA': 'hello', 'argB': 42}; // implicit Map<String, Object>
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
