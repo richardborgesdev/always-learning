@@ -2645,8 +2645,24 @@ void runtimeChecks() {
 
 // https://dart.dev/guides/language/type-system#type-inference
 void typeInference() {
-  Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42}; // explicit type
-  var arguments = {'argA': 'hello', 'argB': 42}; // implicit Map<String, Object>
+  Map<String, dynamic> argumentsExplicitType = {'argA': 'hello', 'argB': 42}; // explicit type
+  var argumentsImplicitType = {'argA': 'hello', 'argB': 42}; // implicit Map<String, Object>
+
+  print(argumentsExplicitType);
+  print(argumentsImplicitType);
+}
+
+// https://dart.dev/guides/language/type-system#field-and-method-inference
+
+// https://dart.dev/guides/language/type-system#static-field-inference
+
+// https://dart.dev/guides/language/type-system#local-variable-inference
+void localVariableInference() {
+  var x = 3; // x is inferred as an int.
+  // x = 4.0; // error
+
+  num y = 3; // A num can be double or int.
+  y = 4.0;
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
