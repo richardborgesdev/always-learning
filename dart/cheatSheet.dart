@@ -2665,6 +2665,18 @@ void localVariableInference() {
   y = 4.0;
 }
 
+// https://dart.dev/guides/language/type-system#type-argument-inference
+void typeArgumentInference() {
+  // Inferred as if you wrote <int>[].
+  List<int> listOfInt = [];
+
+  // Inferred as if you wrote <double>[3.0].
+  var listOfDouble = [3.0];
+
+  // Inferred as Iterable<int>.
+  var ints = listOfDouble.map((x) => x.toInt());
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
