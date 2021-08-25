@@ -2677,6 +2677,18 @@ void typeArgumentInference() {
   var ints = listOfDouble.map((x) => x.toInt());
 }
 
+// https://dart.dev/guides/language/type-system#substituting-types
+
+// https://dart.dev/guides/language/type-system#simple-type-assignment
+class MaineCoon extends Cat {}
+
+void simpleTypeAssignment() {
+  Cat c = Cat();
+  Animal c2 = Cat();
+  // MaineCoon c3 = Cat(); // error
+  Cat c4 = MaineCoon();
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
