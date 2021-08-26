@@ -2689,6 +2689,13 @@ void simpleTypeAssignment() {
   Cat c4 = MaineCoon();
 }
 
+// https://dart.dev/guides/language/type-system#generic-type-assignment
+void genericTypeAssignment() {
+  List<Cat> myCats = <MaineCoon>[];
+  // List<Cat> myCats = <Animal>[]; // error: Cat is a subtype of Animal
+  // List<Cat> myCats = <Animal>[] as List<Cat>; // force generic type, bad!!
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
