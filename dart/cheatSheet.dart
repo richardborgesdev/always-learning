@@ -2696,6 +2696,23 @@ void genericTypeAssignment() {
   // List<Cat> myCats = <Animal>[] as List<Cat>; // force generic type, bad!!
 }
 
+// https://dart.dev/guides/language/type-system#methods
+
+// https://dart.dev/guides/libraries
+
+// https://dart.dev/guides/libraries/library-tour
+
+// https://dart.dev/guides/libraries/library-tour#dartcore---numbers-collections-strings-and-more
+
+// https://dart.dev/guides/libraries/library-tour#printing-to-the-console
+void printingToTheConsole() {
+  var anObject = {'a': 1, 'b': 2}; 
+  print(anObject);
+
+  String tea = 'tea';
+  print('I drink $tea.');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
