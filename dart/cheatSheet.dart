@@ -2779,6 +2779,12 @@ void extractingDataFromAString() {
   assert(codeUnitList[0] == 78);
 }
 
+void convertingToUppercaseOrLowercase() {
+  assert('structured web apps'.toUpperCase() == 'STRUCTURED WEB APPS');
+
+  assert('STRUCTURED WEB APPS'.toLowerCase() == 'structured web apps');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
