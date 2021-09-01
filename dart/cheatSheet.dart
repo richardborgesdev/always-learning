@@ -2785,6 +2785,17 @@ void convertingToUppercaseOrLowercase() {
   assert('STRUCTURED WEB APPS'.toLowerCase() == 'structured web apps');
 }
 
+void trimmingAndEmptyStrings() {
+  // Trim a string.
+  assert('  hello  '.trim() == 'hello');
+
+  // Check whether a string is empty.
+  assert(''.isEmpty);
+
+  // Strings with only white space are not empty.
+  assert('  '.isNotEmpty);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
