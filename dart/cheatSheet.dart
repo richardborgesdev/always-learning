@@ -2796,6 +2796,15 @@ void trimmingAndEmptyStrings() {
   assert('  '.isNotEmpty);
 }
 
+void replacingPartOfAString() {
+  var greetingTemplate = 'Hello, NAME!';
+  var greeting =
+      greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
+
+  // greetingTemplate didn't change.
+  assert(greeting != greetingTemplate);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
