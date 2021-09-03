@@ -2805,6 +2805,19 @@ void replacingPartOfAString() {
   assert(greeting != greetingTemplate);
 }
 
+void buildingAString() {
+  var sb = StringBuffer();
+  sb
+    ..write('Use a StringBuffer for ')
+    ..writeAll(['efficient', 'string', 'creation'], ' ')
+    ..write('.');
+
+  var fullString = sb.toString();
+
+  assert(fullString ==
+      'Use a StringBuffer for efficient string creation.');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
