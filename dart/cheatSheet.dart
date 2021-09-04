@@ -2818,6 +2818,33 @@ void buildingAString() {
       'Use a StringBuffer for efficient string creation.');
 }
 
+void regularExpressions() {
+  // Here's a regular expression for one or more digits.
+  var numbers = RegExp(r'\d+');
+
+  var allCharacters = 'llamas live fifteen to twenty years';
+  var someDigits = 'llamas live 15 to 20 years';
+
+  // contains() can use a regular expression.
+  assert(!allCharacters.contains(numbers));
+  assert(someDigits.contains(numbers));
+
+  // Replace every match with another string.
+  var exedOut = someDigits.replaceAll(numbers, 'XX');
+  assert(exedOut == 'llamas live XX to XX years');
+
+  var numbers2 = RegExp(r'\d+');
+  var someDigits2 = 'llamas live 15 to 20 years';
+
+  // Check whether the reg exp has a match in a string.
+  assert(numbers2.hasMatch(someDigits2));
+
+  // Loop through all matches.
+  for (var match in numbers.allMatches(someDigits2)) {
+    print(match.group(0)); // 15, then 20
+}
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
