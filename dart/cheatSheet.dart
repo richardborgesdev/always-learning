@@ -2787,6 +2787,16 @@ void listsExample() {
   assert(vegetables.every((v) => v == 'broccoli'));
 }
 
+void indexOfExample() {
+  var fruits = ['apples', 'oranges'];
+
+  // Access a list item by index.
+  assert(fruits[0] == 'apples');
+
+  // Find an item in a list.
+  assert(fruits.indexOf('apples') == 0);
+}
+
 void extractingDataFromAString() {
   // Grab a substring.
   assert('Never odd or even'.substring(6, 9) == 'odd');
