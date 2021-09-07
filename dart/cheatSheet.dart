@@ -2797,6 +2797,23 @@ void indexOfExample() {
   assert(fruits.indexOf('apples') == 0);
 }
 
+void sortExample() {
+  var fruits = ['bananas', 'apples', 'oranges'];
+
+  // Sort a list.
+  fruits.sort((a, b) => a.compareTo(b));
+  assert(fruits[0] == 'apples');
+
+  // This list should contain only strings.
+  var fruitsExplicit = <String>[];
+
+  fruitsExplicit.add('apples');
+  var fruit = fruitsExplicit[0];
+  assert(fruit is String);
+
+  // fruits.add(5); // Error: 'int' can't be assigned to 'String'
+}
+
 void extractingDataFromAString() {
   // Grab a substring.
   assert('Never odd or even'.substring(6, 9) == 'odd');
