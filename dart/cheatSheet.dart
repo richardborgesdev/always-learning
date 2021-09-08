@@ -2754,66 +2754,6 @@ void searchingInsideAString() {
   assert('Never odd or even'.indexOf('odd') == 6);
 }
 
-// https://dart.dev/guides/libraries/library-tour#collections
-// Lists
-void listsExample() {
-  // Create an empty list of strings.
-  var grains = <String>[];
-  assert(grains.isEmpty);
-
-  // Create a list using a list literal.
-  var fruits = ['apples', 'oranges'];
-
-  // Add to a list.
-  fruits.add('kiwis');
-
-  // Add multiple items to a list.
-  fruits.addAll(['grapes', 'bananas']);
-
-  // Get the list length.
-  assert(fruits.length == 5);
-
-  // Remove a single item.
-  var appleIndex = fruits.indexOf('apples');
-  fruits.removeAt(appleIndex);
-  assert(fruits.length == 4);
-
-  // Remove all elements from a list.
-  fruits.clear();
-  assert(fruits.isEmpty);
-
-  // You can also create a List using one of the constructors.
-  var vegetables = List.filled(99, 'broccoli');
-  assert(vegetables.every((v) => v == 'broccoli'));
-}
-
-void indexOfExample() {
-  var fruits = ['apples', 'oranges'];
-
-  // Access a list item by index.
-  assert(fruits[0] == 'apples');
-
-  // Find an item in a list.
-  assert(fruits.indexOf('apples') == 0);
-}
-
-void sortExample() {
-  var fruits = ['bananas', 'apples', 'oranges'];
-
-  // Sort a list.
-  fruits.sort((a, b) => a.compareTo(b));
-  assert(fruits[0] == 'apples');
-
-  // This list should contain only strings.
-  var fruitsExplicit = <String>[];
-
-  fruitsExplicit.add('apples');
-  var fruit = fruitsExplicit[0];
-  assert(fruit is String);
-
-  // fruits.add(5); // Error: 'int' can't be assigned to 'String'
-}
-
 void extractingDataFromAString() {
   // Grab a substring.
   assert('Never odd or even'.substring(6, 9) == 'odd');
@@ -2902,7 +2842,88 @@ void regularExpressions() {
   // Loop through all matches.
   for (var match in numbers.allMatches(someDigits2)) {
     print(match.group(0)); // 15, then 20
+  }
 }
+
+// https://dart.dev/guides/libraries/library-tour#collections
+// Lists
+void listsExample() {
+  // Create an empty list of strings.
+  var grains = <String>[];
+  assert(grains.isEmpty);
+
+  // Create a list using a list literal.
+  var fruits = ['apples', 'oranges'];
+
+  // Add to a list.
+  fruits.add('kiwis');
+
+  // Add multiple items to a list.
+  fruits.addAll(['grapes', 'bananas']);
+
+  // Get the list length.
+  assert(fruits.length == 5);
+
+  // Remove a single item.
+  var appleIndex = fruits.indexOf('apples');
+  fruits.removeAt(appleIndex);
+  assert(fruits.length == 4);
+
+  // Remove all elements from a list.
+  fruits.clear();
+  assert(fruits.isEmpty);
+
+  // You can also create a List using one of the constructors.
+  var vegetables = List.filled(99, 'broccoli');
+  assert(vegetables.every((v) => v == 'broccoli'));
+}
+
+void indexOfExample() {
+  var fruits = ['apples', 'oranges'];
+
+  // Access a list item by index.
+  assert(fruits[0] == 'apples');
+
+  // Find an item in a list.
+  assert(fruits.indexOf('apples') == 0);
+}
+
+void sortExample() {
+  var fruits = ['bananas', 'apples', 'oranges'];
+
+  // Sort a list.
+  fruits.sort((a, b) => a.compareTo(b));
+  assert(fruits[0] == 'apples');
+
+  // This list should contain only strings.
+  var fruitsExplicit = <String>[];
+
+  fruitsExplicit.add('apples');
+  var fruit = fruitsExplicit[0];
+  assert(fruit is String);
+
+  // fruits.add(5); // Error: 'int' can't be assigned to 'String'
+}
+
+void setsExamples() {
+  // Create an empty set of strings.
+  var ingredients = <String>{};
+
+  // Add new items to it.
+  ingredients.addAll(['gold', 'titanium', 'xenon']);
+  assert(ingredients.length == 3);
+
+  // Adding a duplicate item has no effect.
+  ingredients.add('gold');
+  assert(ingredients.length == 3);
+
+  // Remove an item from a set.
+  ingredients.remove('gold');
+  assert(ingredients.length == 2);
+
+  // You can also create sets using
+  // one of the constructors.
+  var atomicNumbers = Set.from([79, 22, 54]);
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
