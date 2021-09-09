@@ -2926,6 +2926,17 @@ void setsExamples() {
   var atomicNumbers = Set.from([79, 22, 54]);
 }
 
+void containsExamples() {
+  var ingredients = Set<String>();
+  ingredients.addAll(['gold', 'titanium', 'xenon']);
+
+  // Check whether an item is in the set.
+  assert(ingredients.contains('titanium'));
+
+  // Check whether all the items are in the set.
+  assert(ingredients.containsAll(['titanium', 'xenon']));
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
