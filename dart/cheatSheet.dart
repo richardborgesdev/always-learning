@@ -2937,6 +2937,17 @@ void containsExamples() {
   assert(ingredients.containsAll(['titanium', 'xenon']));
 }
 
+void intersectionExamples() {
+  var ingredients = Set<String>();
+  ingredients.addAll(['gold', 'titanium', 'xenon']);
+
+  // Create the intersection of two sets.
+  var nobleGases = Set.from(['xenon', 'argon']);
+  var intersection = ingredients.intersection(nobleGases);
+  assert(intersection.length == 1);
+  assert(intersection.contains('xenon'));
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
