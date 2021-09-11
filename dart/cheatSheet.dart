@@ -2948,6 +2948,34 @@ void intersectionExamples() {
   assert(intersection.contains('xenon'));
 }
 
+void mapsExamples() {
+  // Maps often use strings as keys.
+  var hawaiianBeaches = {
+    'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
+    'Big Island': ['Wailea Bay', 'Pololu Beach'],
+    'Kauai': ['Hanalei', 'Poipu']
+  };
+
+  // Maps can be built from a constructor.
+  var searchTerms = Map();
+
+  // Maps are parameterized types; you can specify what
+  // types the key and value should be.
+  var nobleGases = Map<int, String>();
+
+  nobleGases = {54: 'xenon'};
+
+  // Retrieve a value with a key.
+  assert(nobleGases[54] == 'xenon');
+
+  // Check whether a map contains a key.
+  assert(nobleGases.containsKey(54));
+
+  // Remove a key and its value.
+  nobleGases.remove(54);
+  assert(!nobleGases.containsKey(54));
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
