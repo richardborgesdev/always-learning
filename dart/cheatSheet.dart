@@ -2976,6 +2976,27 @@ void mapsExamples() {
   assert(!nobleGases.containsKey(54));
 }
 
+void getMapsValuesOrKeys() {
+  var hawaiianBeaches = {
+    'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
+    'Big Island': ['Wailea Bay', 'Pololu Beach'],
+    'Kauai': ['Hanalei', 'Poipu']
+  };
+
+  // Get all the keys as an unordered collection
+  // (an Iterable).
+  var keys = hawaiianBeaches.keys;
+
+  assert(keys.length == 3);
+  assert(Set.from(keys).contains('Oahu'));
+
+  // Get all the values as an unordered collection
+  // (an Iterable of Lists).
+  var values = hawaiianBeaches.values;
+  assert(values.length == 3);
+  assert(values.any((v) => v.contains('Waikiki')));
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
