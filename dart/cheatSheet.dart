@@ -2997,6 +2997,17 @@ void getMapsValuesOrKeys() {
   assert(values.any((v) => v.contains('Waikiki')));
 }
 
+void mapsContainsKeysExamples() {
+  var hawaiianBeaches = {
+    'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
+    'Big Island': ['Wailea Bay', 'Pololu Beach'],
+    'Kauai': ['Hanalei', 'Poipu']
+  };
+
+  assert(hawaiianBeaches.containsKey('Oahu'));
+  assert(!hawaiianBeaches.containsKey('Florida'));
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
