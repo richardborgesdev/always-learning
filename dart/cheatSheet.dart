@@ -3008,6 +3008,16 @@ void mapsContainsKeysExamples() {
   assert(!hawaiianBeaches.containsKey('Florida'));
 }
 
+void putIfAbsentExample() {
+  String pickToughestKid() => 'string';
+
+  var teamAssignments = <String, String>{};
+
+  teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
+
+  assert(teamAssignments['Carcher'] != null);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
