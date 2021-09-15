@@ -3018,6 +3018,20 @@ void putIfAbsentExample() {
   assert(teamAssignments['Carcher'] != null);
 }
 
+// Common collection methods
+void isEmptyIsNotEmptyExamples() {
+  var coffees = <String>[];
+  var teas = ['green', 'black', 'chamomile', 'earl grey'];
+  assert(coffees.isEmpty);
+  assert(teas.isNotEmpty);
+}
+
+void forEachExample() {
+  var teas = ['green', 'black', 'chamomile', 'earl grey'];
+
+  teas.forEach((tea) => print('I drink $tea'));
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
