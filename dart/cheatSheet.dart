@@ -3026,11 +3026,54 @@ void isEmptyIsNotEmptyExamples() {
   assert(teas.isNotEmpty);
 }
 
-void forEachExample() {
+void forEachExamples() {
   var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
   teas.forEach((tea) => print('I drink $tea'));
+
+  var loudTeas = teas.map((tea) => tea.toUpperCase());
+  loudTeas.forEach(print);
+
+  loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
 }
+
+void forEachWithMapsExample() {
+  var hawaiianBeaches = {
+    'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
+    'Big Island': ['Wailea Bay', 'Pololu Beach'],
+    'Kauai': ['Hanalei', 'Poipu']
+  };
+
+  hawaiianBeaches.forEach((k, v) {
+    print('I want to visit $k and swim at $v');
+    // I want to visit Oahu and swim at
+    // [Waikiki, Kailua, Waimanalo], etc.
+  });
+}
+
+void forEachWithWhere() {
+  var teas = ['green', 'black', 'chamomile', 'earl grey'];
+
+  // Chamomile is not caffeinated.
+  bool isDecaffeinated(String teaName) =>
+      teaName == 'chamomile';
+
+  // Use where() to find only the items that return true
+  // from the provided function.
+  var decaffeinatedTeas =
+      teas.where((tea) => isDecaffeinated(tea));
+  // or teas.where(isDecaffeinated)
+
+  // Use any() to check whether at least one item in the
+  // collection satisfies a condition.
+  assert(teas.any(isDecaffeinated));
+
+  // Use every() to check whether all the items in a
+  // collection satisfy a condition.
+  assert(!teas.every(isDecaffeinated));
+}
+
+// https://dart.dev/guides/libraries/library-tour#uris
 
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
