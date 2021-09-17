@@ -3074,6 +3074,16 @@ void forEachWithWhere() {
 }
 
 // https://dart.dev/guides/libraries/library-tour#uris
+void encodingAndDecodingFullyQualifiedURIs() {
+  var uri = 'https://example.org/api?foo=some message';
+
+  var encoded = Uri.encodeFull(uri);
+  assert(encoded ==
+      'https://example.org/api?foo=some%20message');
+
+  var decoded = Uri.decodeFull(encoded);
+  assert(uri == decoded);
+}
 
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
