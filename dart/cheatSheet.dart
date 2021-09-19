@@ -3085,6 +3085,17 @@ void encodingAndDecodingFullyQualifiedURIs() {
   assert(uri == decoded);
 }
 
+void parsingURIs() {
+  var uri =
+    Uri.parse('https://example.org:8080/foo/bar#frag');
+
+  assert(uri.scheme == 'https');
+  assert(uri.host == 'example.org');
+  assert(uri.path == '/foo/bar');
+  assert(uri.fragment == 'frag');
+  assert(uri.origin == 'https://example.org:8080');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
