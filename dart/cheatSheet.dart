@@ -3096,6 +3096,17 @@ void parsingURIs() {
   assert(uri.origin == 'https://example.org:8080');
 }
 
+void buildingURIs() {
+  var uri = Uri(
+    scheme: 'https',
+    host: 'example.org',
+    path: '/foo/bar',
+    fragment: 'frag'
+  );
+
+  assert(uri.toString() == 'https://example.org/foo/bar#frag');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
