@@ -3107,6 +3107,28 @@ void buildingURIs() {
   assert(uri.toString() == 'https://example.org/foo/bar#frag');
 }
 
+// https://dart.dev/guides/libraries/library-tour#dates-and-times
+void creatingDates() {
+  // Get the current date and time.
+  var now = DateTime.now();
+
+  // Create a new DateTime with the local time zone.
+  var y2k = DateTime(2000); // January 1, 2000
+
+  // Specify the month and day.
+  y2k = DateTime(2000, 1, 2); // January 2, 2000
+
+  // Specify the date as a UTC time.
+  y2k = DateTime.utc(2000); // 1/1/2000, UTC
+
+  // Specify a date and time in ms since the Unix epoch.
+  y2k = DateTime.fromMillisecondsSinceEpoch(946684800000,
+      isUtc: true);
+
+  // Parse an ISO 8601 date.
+  y2k = DateTime.parse('2000-01-01T00:00:00Z');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
