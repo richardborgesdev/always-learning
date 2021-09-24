@@ -3158,6 +3158,21 @@ void durationExamples() {
   assert(duration.inDays == 366); // y2k was a leap year.
 }
 
+// https://dart.dev/guides/libraries/library-tour#utility-classes
+class Line implements Comparable<Line> {
+  final int length;
+  const Line(this.length);
+
+  @override
+  int compareTo(Line other) => length - other.length;
+}
+
+void comparingObjects() {
+  var short = const Line(1);
+  var long = const Line(100);
+  assert(short.compareTo(long) < 0);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
