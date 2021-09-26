@@ -3207,6 +3207,31 @@ void implementingMapKeys() {
   assert(p1 != p3);
 }
 
+class Process {
+  // Represents a process...
+}
+
+class ProcessIterator implements Iterator<Process> {
+  @override
+  Process get current => new Process();
+  @override
+  bool moveNext() => true;
+}
+
+// A mythical class that lets you iterate through all
+// processes. Extends a subclass of [Iterable].
+class Processes extends Iterable<Process> {
+  @override
+  final Iterator<Process> iterator = ProcessIterator();
+}
+
+void iterationExamples() {
+  // Iterable objects can be used with for-in.
+  for (var process in Processes()) {
+    // Do something with the process.
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
