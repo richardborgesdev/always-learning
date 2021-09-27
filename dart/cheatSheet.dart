@@ -3232,6 +3232,21 @@ void iterationExamples() {
   }
 }
 
+// https://dart.dev/guides/libraries/library-tour#exceptions
+class FooException implements Exception {
+  final String? msg;
+
+  const FooException([this.msg]);
+
+  @override
+  String toString() => msg ?? 'FooException';
+}
+
+void exceptionsExamples() {
+  FooException fe = new FooException();
+  print(fe.toString());
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
