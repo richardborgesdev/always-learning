@@ -3247,6 +3247,35 @@ void exceptionsExamples() {
   print(fe.toString());
 }
 
+// https://dart.dev/guides/libraries/library-tour#future
+Future findEntryPoint() => new Future(() => true);
+Future runExecutable(int entryPoint) => new Future(() => true);
+Future flushThenExit([int ?code]) => new Future(() => true);;
+
+void futureExample() {
+  /*
+  findEntryPoint().then((entryPoint) {
+    return runExecutable(entryPoint);
+  }).then(flushThenExit);
+  */
+}
+
+Future<void> runUsingAsyncAwait() async {
+  var entryPoint = await findEntryPoint();
+  var exitCode = await runExecutable(entryPoint);
+  await flushThenExit(exitCode);
+}
+
+Future<void> runUsingAsyncAwaitWithException() async {
+  var entryPoint = await findEntryPoint();
+  try {
+    var exitCode = await runExecutable(entryPoint);
+    await flushThenExit(exitCode);
+  } catch (e) {
+    // Handle the error...
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
