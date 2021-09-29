@@ -1,4 +1,5 @@
 import "dart:math";
+import "dart:html";
 import 'package:characters/characters.dart';
 
 /*
@@ -3250,7 +3251,7 @@ void exceptionsExamples() {
 // https://dart.dev/guides/libraries/library-tour#future
 Future findEntryPoint() => new Future(() => true);
 Future runExecutable(int entryPoint) => new Future(() => true);
-Future flushThenExit([int ?code]) => new Future(() => true);;
+Future flushThenExit([int ?code]) => new Future(() => true);
 
 void futureExample() {
   /*
@@ -3274,6 +3275,20 @@ Future<void> runUsingAsyncAwaitWithException() async {
   } catch (e) {
     // Handle the error...
   }
+}
+
+void futureHttpExample() {
+  String url = '';
+
+  HttpRequest.getString(url).then((String result) {
+    print(result);
+  });
+
+  HttpRequest.getString(url).then((String result) {
+    print(result);
+  }).catchError((e) {
+    // Handle or ignore the error.
+  });
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
