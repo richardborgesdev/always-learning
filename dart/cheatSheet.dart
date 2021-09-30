@@ -3291,6 +3291,33 @@ void futureHttpExample() {
   });
 }
 
+Future costlyQuery(url) => new Future(() => url);
+Future expensiveWork(value) => new Future(() => value);
+Future lengthyComputation() => new Future(() => true);
+
+void chainingMultipleAsynchronousMethods(url) async {
+  // Future
+  Future result = costlyQuery(url);
+
+  result
+    .then((value) => expensiveWork(value))
+    .then((_) => lengthyComputation())
+    .then((_) => print('Done'))
+    .catchError((exception) {
+      print('Error');
+    });
+
+  // Await
+  try {
+    final value = await costlyQuery(url);
+    await expensiveWork(value);
+    await lengthyComputation();
+    print('Done!');
+  } catch (e) {
+    /* Handle exception... */
+  }
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
