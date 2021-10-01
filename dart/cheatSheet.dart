@@ -3318,6 +3318,20 @@ void chainingMultipleAsynchronousMethods(url) async {
   }
 }
 
+Future<void> deleteLotsOfFiles() async => new Future(() => true);
+Future<void> copyLotsOfFiles() async => new Future(() => true);
+Future<void> checksumLotsOfOtherFiles() async => new Future(() => true);
+
+void waitingForMultipleFutures() async {
+  await Future.wait([
+    deleteLotsOfFiles(),
+    copyLotsOfFiles(),
+    checksumLotsOfOtherFiles(),
+  ]);
+
+  print('Done with all the long steps!');
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
