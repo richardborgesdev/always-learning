@@ -3332,6 +3332,24 @@ void waitingForMultipleFutures() async {
   print('Done with all the long steps!');
 }
 
+// https://dart.dev/guides/libraries/library-tour#stream
+void streamExample() {
+  /*
+  FileSystemEntity.isDirectory(searchPath).then((isDir) {
+    if (isDir) {
+      final startingDir = Directory(searchPath);
+      startingDir.list().listen((entity) {
+        if (entity is File) {
+          searchFile(entity, searchTerms);
+        }
+      });
+    } else {
+      searchFile(File(searchPath), searchTerms);
+    }
+  });
+  */
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
