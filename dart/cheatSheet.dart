@@ -3348,6 +3348,20 @@ void streamExample() {
     }
   });
   */
+
+  /*
+  // await example
+  if (await FileSystemEntity.isDirectory(searchPath)) {
+    final startingDir = Directory(searchPath);
+    await for (var entity in startingDir.list()) {
+      if (entity is File) {
+        searchFile(entity, searchTerms);
+      }
+    }
+  } else {
+    searchFile(File(searchPath), searchTerms);
+  }
+  */
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
