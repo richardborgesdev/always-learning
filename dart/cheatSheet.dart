@@ -1,5 +1,6 @@
 import "dart:math";
 import "dart:html";
+import "dart:convert";
 import 'package:characters/characters.dart';
 
 /*
@@ -3362,6 +3363,23 @@ void streamExample() {
     searchFile(File(searchPath), searchTerms);
   }
   */
+}
+
+void listeningForStreamData() {
+  /*
+  // Add an event handler to a button.
+  submitButton.onClick.listen((e) {
+    // When the button is clicked, it runs this code.
+    submitData();
+  });
+  */
+}
+
+void trasnformingStreamData(Stream<List<int>> inputStream) {
+
+  var lines = inputStream
+    .transform(utf8.decoder)
+    .transform(LineSplitter());
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
