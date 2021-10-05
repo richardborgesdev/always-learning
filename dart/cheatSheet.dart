@@ -1,5 +1,6 @@
 import "dart:math";
-import "dart:html";
+import "dart:html" as dartHTML;
+import 'dart:io' as dartIO;
 import "dart:convert";
 import 'package:characters/characters.dart';
 
@@ -3281,11 +3282,11 @@ Future<void> runUsingAsyncAwaitWithException() async {
 void futureHttpExample() {
   String url = '';
 
-  HttpRequest.getString(url).then((String result) {
+  dartHTML.HttpRequest.getString(url).then((String result) {
     print(result);
   });
 
-  HttpRequest.getString(url).then((String result) {
+  dartHTML.HttpRequest.getString(url).then((String result) {
     print(result);
   }).catchError((e) {
     // Handle or ignore the error.
@@ -3375,11 +3376,41 @@ void listeningForStreamData() {
   */
 }
 
-void trasnformingStreamData(Stream<List<int>> inputStream) {
+void transformingStreamData(Stream<List<int>> inputStream) {
 
   var lines = inputStream
     .transform(utf8.decoder)
     .transform(LineSplitter());
+}
+
+Future<void> handlingErrorsAndCompletion() async {
+  var config = dartIO.File('config.txt');
+  Stream<List<int>> inputStream = config.openRead();
+
+  var lines = inputStream
+      .transform(utf8.decoder)
+      .transform(LineSplitter());
+
+  try {
+    await for (var line in lines) {
+      print('Got ${line.length} characters from stream');
+    }
+    print('file is now closed');
+  } catch (e) {
+    print(e);
+  }
+
+  // stream
+  inputStream
+      .transform(utf8.decoder)
+      .transform(LineSplitter())
+      .listen((String line) {
+    print('Got ${line.length} characters from stream');
+  }, onDone: () {
+    print('file is now closed');
+  }, onError: (e) {
+    print(e);
+  });
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
