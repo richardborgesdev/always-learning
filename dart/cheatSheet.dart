@@ -3427,6 +3427,12 @@ void mathTrigonometryExample() {
   assert((sinOf30degrees - 0.5).abs() < 0.01);
 }
 
+// https://dart.dev/guides/libraries/library-tour#maximum-and-minimum
+void maximumAndMinimumExamples() {
+  assert(max(1, 1000) == 1000);
+  assert(min(1, -1000) == -1000);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
