@@ -3441,6 +3441,14 @@ void mathConstantsExamples() {
   print(sqrt2); // 1.4142135623730951
 }
 
+// https://dart.dev/guides/libraries/library-tour#random-numbers
+void randomNunbersExample() {
+  var random = Random();
+  random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
+  random.nextInt(10); // Between 0 and 9.
+  random.nextBool(); // true or false
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
