@@ -3449,6 +3449,26 @@ void randomNunbersExample() {
   random.nextBool(); // true or false
 }
 
+// https://dart.dev/guides/libraries/library-tour#decoding-and-encoding-json
+void decodingAndEncodingJson() {
+  // NOTE: Be sure to use double quotes ("),
+  // not single quotes ('), inside the JSON string.
+  // This string is JSON, not Dart.
+  var jsonString = '''
+    [
+      {"score": 40},
+      {"score": 80}
+    ]
+  ''';
+
+  var scores = jsonDecode(jsonString);
+  assert(scores is List);
+
+  var firstScore = scores[0];
+  assert(firstScore is Map);
+  assert(firstScore['score'] == 40);
+}
+
 // https://dart.dev/guides/language/language-tour#the-main-function
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
