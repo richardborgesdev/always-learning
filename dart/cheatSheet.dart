@@ -3450,7 +3450,7 @@ void randomNunbersExample() {
 }
 
 // https://dart.dev/guides/libraries/library-tour#decoding-and-encoding-json
-void decodingAndEncodingJson() {
+void decodingJson() {
   // NOTE: Be sure to use double quotes ("),
   // not single quotes ('), inside the JSON string.
   // This string is JSON, not Dart.
@@ -3467,6 +3467,20 @@ void decodingAndEncodingJson() {
   var firstScore = scores[0];
   assert(firstScore is Map);
   assert(firstScore['score'] == 40);
+}
+
+void encodingJson() {
+  var scores = [
+    {'score': 40},
+    {'score': 80},
+    {'score': 100, 'overtime': true, 'special_guest': null}
+  ];
+
+  var jsonText = jsonEncode(scores);
+  assert(jsonText ==
+      '[{"score":40},{"score":80},'
+          '{"score":100,"overtime":true,'
+          '"special_guest":null}]');
 }
 
 // https://dart.dev/guides/language/language-tour#the-main-function
