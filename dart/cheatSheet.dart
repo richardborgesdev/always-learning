@@ -3533,3 +3533,25 @@ void encodeUTF8() {
     assert(encoded[i] == utf8Bytes[i]);
   }
 }
+
+// https://dart.dev/guides/libraries/library-tour#manipulating-the-dom
+void manipulatingTheDom() {
+  // Find an element by id (an-id).
+  dartHTML.Element idElement = dartHTML.querySelector('#an-id')!;
+
+  // Find an element by class (a-class).
+  dartHTML.Element classElement = dartHTML.querySelector('.a-class')!;
+
+  // Find all elements by tag (<div>).
+  List<dartHTML.Element> divElements = dartHTML.querySelectorAll('div');
+
+  // Find all text inputs.
+  List<dartHTML.Element> textInputElements = dartHTML.querySelectorAll(
+    'input[type="text"]',
+  );
+
+  // Find all elements with the CSS class 'class'
+  // inside of a <p> that is inside an element with
+  // the ID 'id'.
+  List<dartHTML.Element> specialParagraphElements = dartHTML.querySelectorAll('#id p.class');
+}
