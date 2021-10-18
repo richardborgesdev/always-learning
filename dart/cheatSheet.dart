@@ -3555,3 +3555,36 @@ void manipulatingTheDom() {
   // the ID 'id'.
   List<dartHTML.Element> specialParagraphElements = dartHTML.querySelectorAll('#id p.class');
 }
+
+void manipulatingElements() {
+  /*
+    <a id="example" href="/another/example">link text</a>
+  */
+  var anchor = dartHTML.querySelector('#example') as dartHTML.AnchorElement;
+  anchor.href = 'https://dart.dev';
+
+  /*
+    <p>
+      <span class="linux">Words for Linux</span>
+      <span class="macos">Words for Mac</span>
+      <span class="windows">Words for Windows</span>
+    </p>
+  */
+
+  const osList = ['macos', 'windows', 'linux'];
+  final userOs = dartIO.Platform.operatingSystem;
+
+  // For each possible OS...
+  for (final os in osList) {
+    // Matches user OS?
+    bool shouldShow = (os == userOs);
+
+    // Find all elements with class=os. For example, if
+    // os == 'windows', call querySelectorAll('.windows')
+    // to find all elements with the class "windows".
+    // Note that '.$os' uses string interpolation.
+    for (final elem in dartHTML.querySelectorAll('.$os')) {
+      elem.hidden = !shouldShow; // Show or hide.
+    }
+  }
+}
