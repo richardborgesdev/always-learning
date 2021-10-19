@@ -3588,3 +3588,14 @@ void manipulatingElements() {
     }
   }
 }
+
+void creatingElements() {
+  var elem = dartHTML.ParagraphElement();
+  elem.text = 'Creating is easy!';
+
+  var elem2 = dartHTML.Element.html(
+    '<p>Creating <em>is</em> easy!</p>',
+  );
+
+  dartHTML.document.body!.children.add(elem2);
+}
