@@ -3599,3 +3599,11 @@ void creatingElements() {
 
   dartHTML.document.body!.children.add(elem2);
 }
+
+void addReplaceRemove(elem) {
+  dartHTML.querySelector('#inputs')!.nodes.add(elem);
+
+  dartHTML.querySelector('#status')!.replaceWith(elem);
+
+  dartHTML.querySelector('#expendable')?.remove();
+}
