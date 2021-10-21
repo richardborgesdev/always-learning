@@ -3607,3 +3607,20 @@ void addReplaceRemove(elem) {
 
   dartHTML.querySelector('#expendable')?.remove();
 }
+
+void manipulatingCSS() {
+  var elem = dartHTML.querySelector('#message')!;
+  elem.classes.add('warning');
+
+  var message = dartHTML.DivElement();
+  message.id = 'message2';
+  message.text = 'Please subscribe to the Dart mailing list.';
+
+   message = dartHTML.DivElement()
+    ..id = 'message2'
+    ..text = 'Please subscribe to the Dart mailing list.';
+
+  message.style
+    ..fontWeight = 'bold'
+    ..fontSize = '3em';
+}
