@@ -3624,3 +3624,16 @@ void manipulatingCSS() {
     ..fontWeight = 'bold'
     ..fontSize = '3em';
 }
+
+void handlingJSEvents() {
+  // Find a button by ID and add an event handler.
+  dartHTML.querySelector('#submitInfo')!.onClick.listen((e) {
+    // When the button is clicked, it runs this code.
+    // submitData();
+  });
+
+  dartHTML.document.body!.onClick.listen((e) {
+    final clickedElem = e.target;
+    // ...
+  });
+}
