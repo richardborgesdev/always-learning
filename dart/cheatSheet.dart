@@ -3637,3 +3637,9 @@ void handlingJSEvents() {
     // ...
   });
 }
+
+// https://dart.dev/guides/libraries/library-tour#using-http-resources-with-httprequest
+void usingHTTPRequest(url) async {
+    String pageHtml = await dartHTML.HttpRequest.getString(url);
+  // Do something with pageHtml...
+}
