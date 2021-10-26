@@ -3643,3 +3643,12 @@ void usingHTTPRequest(url) async {
     String pageHtml = await dartHTML.HttpRequest.getString(url);
   // Do something with pageHtml...
 }
+
+void handlingHTTPRequestError(jsonUri) async {
+  try {
+    var data = await dartHTML.HttpRequest.getString(jsonUri);
+    // Process data...
+  } catch (e) {
+    // Handle exception...
+  }
+}
