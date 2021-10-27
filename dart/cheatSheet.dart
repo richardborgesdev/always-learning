@@ -3652,3 +3652,15 @@ void handlingHTTPRequestError(jsonUri) async {
     // Handle exception...
   }
 }
+
+void gettingHTTPRequestMetadata(url) async {
+  dartHTML.HttpRequest req = await dartHTML.HttpRequest.request(
+    url,
+    method: 'HEAD',
+  );
+
+  if (req.status == 200) {
+    // Successful URL access...
+  }
+  // ···
+}
