@@ -3664,3 +3664,14 @@ void gettingHTTPRequestMetadata(url) async {
   }
   // ···
 }
+
+void requestComplete(request) => {};
+
+void httpRequestFlow(url, encodedData) {
+  var request = dartHTML.HttpRequest();
+
+  request
+    ..open('POST', url)
+    ..onLoadEnd.listen((e) => requestComplete(request))
+    ..send(encodedData);
+}
