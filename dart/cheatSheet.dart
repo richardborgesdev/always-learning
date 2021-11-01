@@ -3675,3 +3675,28 @@ void httpRequestFlow(url, encodedData) {
     ..onLoadEnd.listen((e) => requestComplete(request))
     ..send(encodedData);
 }
+
+String encodeMap(Map<String, String> data) => data.entries
+    .map((e) =>
+        '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+    .join('&');
+
+void sendDataToTheServer(url) async {
+  const data = {'dart': 'fun', 'angular': 'productive'};
+
+  var request = dartHTML.HttpRequest();
+  request
+    ..open('POST', url)
+    ..setRequestHeader(
+      'Content-type',
+      'application/x-www-form-urlencoded',
+    )
+    ..send(encodeMap(data));
+
+  await request.onLoadEnd.first;
+
+  if (request.status == 200) {
+    // Successful URL access...
+  }
+  // ···
+}
