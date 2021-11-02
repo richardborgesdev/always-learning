@@ -3700,3 +3700,14 @@ void sendDataToTheServer(url) async {
   }
   // ···
 }
+
+// https://dart.dev/guides/libraries/library-tour#sending-and-receiving-real-time-data-with-websockets
+void sendigReceivingRealTimeData() {
+  var ws = dartHTML.WebSocket('ws://echo.websocket.org');
+
+  ws.send('Hello from Dart!');
+
+  ws.onMessage.listen((dartHTML.MessageEvent e) {
+    print('Received message: ${e.data}');
+  });
+}
