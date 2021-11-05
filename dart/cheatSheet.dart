@@ -3748,3 +3748,17 @@ void handlingWebsocketEvents([int retrySeconds = 1]) {
     print('Received message: ${e.data}');
   });
 }
+
+// https://dart.dev/guides/libraries/library-tour#dartio
+// https://dart.dev/guides/libraries/library-tour#files-and-directories
+Future<void> filesAndDirectories() async {
+  var config = dartIO.File('config.txt');
+
+  // Put the whole file in a single string.
+  var stringContents = await config.readAsString();
+  print('The file is ${stringContents.length} characters long.');
+
+  // Put each line of the file into its own string.
+  var lines = await config.readAsLines();
+  print('The file is ${lines.length} lines long.');
+}
