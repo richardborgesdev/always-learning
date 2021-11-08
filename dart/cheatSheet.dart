@@ -3762,3 +3762,10 @@ Future<void> filesAndDirectories() async {
   var lines = await config.readAsLines();
   print('The file is ${lines.length} lines long.');
 }
+
+Future<void> readingFileAsBinary() async {
+  var config = dartIO.File('config.txt');
+
+  var contents = await config.readAsBytes();
+  print('The file is ${contents.length} bytes long.');
+}
