@@ -3769,3 +3769,14 @@ Future<void> readingFileAsBinary() async {
   var contents = await config.readAsBytes();
   print('The file is ${contents.length} bytes long.');
 }
+
+Future<void> handlingReadingFilesError() async {
+  var config = dartIO.File('config.txt');
+
+  try {
+    var contents = await config.readAsString();
+    print(contents);
+  } catch (e) {
+    print(e);
+  }
+}
