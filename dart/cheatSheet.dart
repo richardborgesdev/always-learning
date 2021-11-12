@@ -3780,3 +3780,22 @@ Future<void> handlingReadingFilesError() async {
     print(e);
   }
 }
+
+Future<void> streamingFileContents() async {
+  var config = dartIO.File('config.txt');
+
+  Stream<List<int>> inputStream = config.openRead();
+
+  var lines = utf8.decoder
+      .bind(inputStream)
+      .transform(const LineSplitter());
+
+  try {
+    await for (final line in lines) {
+      print('Got ${line.length} characters from stream');
+    }
+    print('file is now closed');
+  } catch (e) {
+    print(e);
+  }
+}
