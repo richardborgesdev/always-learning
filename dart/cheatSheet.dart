@@ -3799,3 +3799,14 @@ Future<void> streamingFileContents() async {
     print(e);
   }
 }
+
+void writingFileContents() async {
+  var logFile = dartIO.File('log.txt');
+  var sink = logFile.openWrite();
+  sink.write('FILE ACCESSED ${DateTime.now()}\n');
+  await sink.flush();
+  await sink.close();
+
+  // add to end of file
+  sink = logFile.openWrite(mode: dartIO.FileMode.append); 
+}
