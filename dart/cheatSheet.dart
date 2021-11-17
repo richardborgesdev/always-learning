@@ -3808,5 +3808,24 @@ void writingFileContents() async {
   await sink.close();
 
   // add to end of file
-  sink = logFile.openWrite(mode: dartIO.FileMode.append); 
+  sink = logFile.openWrite(mode: dartIO.FileMode.append);
 }
+
+Future<void> listingFilesInDirectory() async {
+  var dir = dartIO.Directory('tmp');
+
+  try {
+    var dirList = dir.list();
+    await for (final dartIO.FileSystemEntity f in dirList) {
+      if (f is dartIO.File) {
+        print('Found file ${f.path}');
+      } else if (f is dartIO.Directory) {
+        print('Found dir ${f.path}');
+      }
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
+// https://dart.dev/guides/libraries/library-tour#http-clients-and-servers
