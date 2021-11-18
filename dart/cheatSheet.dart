@@ -3829,3 +3829,25 @@ Future<void> listingFilesInDirectory() async {
 }
 
 // https://dart.dev/guides/libraries/library-tour#http-clients-and-servers
+Future<void> httpServer() async {
+  final requests = await dartIO.HttpServer.bind('localhost', 8888);
+  await for (final request in requests) {
+    processRequest(request);
+  }
+}
+
+void processRequest(dartIO.HttpRequest request) {
+  print('Got request for ${request.uri.path}');
+  final response = request.response;
+  if (request.uri.path == '/dart') {
+    response
+      ..headers.contentType = dartIO.ContentType(
+        'text',
+        'plain',
+      )
+      ..write('Hello from the server');
+  } else {
+    response.statusCode = dartIO.HttpStatus.notFound;
+  }
+  response.close();
+}
