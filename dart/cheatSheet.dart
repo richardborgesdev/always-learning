@@ -3851,3 +3851,16 @@ void processRequest(dartIO.HttpRequest request) {
   }
   response.close();
 }
+
+Future<void> httpClient() async {
+  var url = Uri.parse('http://localhost:8888/dart');
+  var httpClient = dartIO.HttpClient();
+
+  var request = await httpClient.getUrl(url);
+  var response = await request.close();
+
+  var data = await utf8.decoder.bind(response).toList();
+  print('Response ${response.statusCode}: $data');
+  
+  httpClient.close();
+}
