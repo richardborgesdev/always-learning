@@ -1,10 +1,18 @@
+
+# flutter doc
 [Docs](https://docs.flutter.dev/)
 
-[Linux install](https://docs.flutter.dev/get-started/install/linux)
-[setup vscode](https://docs.flutter.dev/get-started/editor?tab=vscode)
-[test drive vscode](https://docs.flutter.dev/get-started/test-drive?tab=vscode)
+# flutter setup
 
-# android sdk problems on linux
+## linux setup
+[Linux install](https://docs.flutter.dev/get-started/install/linux)
+
+## vscode setup
+[setup vscode](https://docs.flutter.dev/get-started/editor?tab=vscode)
+
+# android sdk setup
+
+## android sdk problems on linux
 * on run flutter  doctor, get these errors:
 ```
 ✗ Flutter requires Android SDK 29 and the Android BuildTools 28.0.3
@@ -19,3 +27,8 @@ sudo apt update && sudo apt install android-sdk
 
 sudo snap install androidsdk --edge
 ```
+
+# good projects to start
+[Flutter Basic Training - 12 Minute Bootcamp](https://youtu.be/1xipg02Wu8s)
+
+[test drive vscode](https://docs.flutter.dev/get-started/test-drive?tab=vscode)
