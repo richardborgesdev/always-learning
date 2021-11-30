@@ -33,8 +33,43 @@ sudo snap install androidsdk --edge
 > solved with adroid studio
 ---
 
+## linux setup checklist
+1. java
+    1. sudo apt-get update
+    1. sudo apt-get install openjdk-10-jdk
+    1. java --version
+1. git
+    1. apt-get install git
+    1. git --version
+1. vscode
+    1. download from site
+    1. add flutter extension
+    1. start without debugging
+1. android studio
+    1. download from site
+    1. custom > android virtual device
+    1. adroid virtual device > create virtual device
+    1. check virtualization on your bios: kvm-ok
+    1. add flutter plugin
+1. flutter
+    1. download sdk from site
+    1. or use repo from git with stable version tag
+    1. add flutter alias on bashrc: nano .bashrc
+    1. flutter doctor to check variable path
+    1. accept android licenses
+    1. flutter create project-example
+    1. flutter run
+
 ### accepting license error
-solved with: [stackoverflor - flutter doctor --android-licenses gives a java error](https://stackoverflow.com/questions/61993738/flutter-doctor-android-licenses-gives-a-java-error)
+solved with: [stackoverflow - flutter doctor --android-licenses gives a java error](https://stackoverflow.com/questions/61993738/flutter-doctor-android-licenses-gives-a-java-error)
+
+### andriod AVD problem
+#### [stackoverflow - Android Studio: /dev/kvm device permission denied](https://stackoverflow.com/questions/37300811/android-studio-dev-kvm-device-permission-denied)
+
+1. install virtualization manager: sudo apt install qemu-kvm
+1. check permissions: ls -al /dev/kvm
+1. check groups permissions: grep kvm /etc/group
+1. add current user: sudo adduser $USER kvm
 
 # good projects to start
 [fireship - Flutter Basic Training - 12 Minute Bootcamp](https://youtu.be/1xipg02Wu8s)
