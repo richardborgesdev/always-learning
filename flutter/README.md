@@ -71,6 +71,9 @@ solved with: [stackoverflow - flutter doctor --android-licenses gives a java err
 1. check groups permissions: grep kvm /etc/group
 1. add current user: sudo adduser $USER kvm
 
+# tips
+1. run the emulator (flutter emulator or android virtual device) before run the flutter app
+
 # good projects to start
 [fireship - Flutter Basic Training - 12 Minute Bootcamp](https://youtu.be/1xipg02Wu8s)
 
