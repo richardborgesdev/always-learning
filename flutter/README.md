@@ -79,3 +79,10 @@ solved with: [stackoverflow - flutter doctor --android-licenses gives a java err
 [fireship - Flutter Basic Training - 12 Minute Bootcamp](https://youtu.be/1xipg02Wu8s)
 
 [flutter doc - Test drive vscode](https://docs.flutter.dev/get-started/test-drive?tab=vscode)
+
+# design-system
+1. android: 
+    1. [material design](https://material.io/)
+1. apple: 
+    1. [Cupertino (iOS-style) widgets](https://docs.flutter.dev/development/ui/widgets/cupertino)
+    1. [cupertino library](https://api.flutter.dev/flutter/cupertino/cupertino-library.html)
