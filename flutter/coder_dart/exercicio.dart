@@ -51,4 +51,32 @@ main () {
   const A = 3;
   final B = 3;
   var C = 3;
+
+  // functions
+  soma(1,3);
+
+  final r = exec(2, 3, (a, b) {
+    return a - b;
+  });
+
+  print('O resultado é $r');
+
+  var p1 = new Produto();
+  p1.nome = 'lapis';
+  p1.preco = 4.59;
+
+  print("O produto ${p1.nome} tem peço ${p1.preco}");
+}
+
+soma(a, b) {
+  print(a + b);
+}
+
+int exec(int a, int b, int Function(int, int) fn) {
+  return fn(a, b);
+}
+
+class Produto {
+  String nome = '';
+  double preco = 0.0;
 }
