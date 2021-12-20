@@ -3,11 +3,13 @@ import 'package:flutter/widgets.dart';
 
 main() => runApp(PerguntaApp());
 
-class PerguntaApp extends StatelessWidget {
-  var perguntaSelecionada = 0; // jeito errado
+class PerguntaAppState extends State<PerguntaApp> {
+  var perguntaSelecionada = 0;
 
   void responder() {
-    perguntaSelecionada++;
+    setState(() {
+      perguntaSelecionada++;
+    });
     print(perguntaSelecionada);
   }
 
@@ -17,13 +19,13 @@ class PerguntaApp extends StatelessWidget {
     };
   }
 
-  final perguntas = [
-    'Qual é a sua cor favorita?',
-    'Qual é seu animal cor favorito?',
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final perguntas = [
+      'Qual é a sua cor favorita?',
+      'Qual é seu animal cor favorito?',
+    ];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -48,5 +50,11 @@ class PerguntaApp extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class PerguntaApp extends StatefulWidget {
+  PerguntaAppState createState() {
+    return PerguntaAppState();
   }
 }
