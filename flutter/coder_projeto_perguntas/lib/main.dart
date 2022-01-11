@@ -36,7 +36,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             Questao(perguntas[_perguntaSelecionada]),
-            Resposta('Resposta 1'),
+            Resposta('Resposta 1 widget', _responder),
             ElevatedButton(onPressed: _responder, child: Text('Resposta 1')),
             ElevatedButton(
                 onPressed: () {
