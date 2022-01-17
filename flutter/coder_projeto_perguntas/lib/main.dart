@@ -7,11 +7,42 @@ main() => runApp(PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
+  final List<Map<String, Object>> _perguntas = const [
+    {
+      'texto': 'Qual é a sua cor favorita?',
+      'respostas': [
+        'Preto',
+        'Vermelho',
+        'Verde',
+        'Branco',
+      ]
+    },
+    {
+      'texto': 'Qual é seu animal favorito?',
+      'respostas': [
+        'Coelho',
+        'Cobra',
+        'Elefante',
+        'Leão',
+      ]
+    },
+    {
+      'texto': 'Qual é seu instrutor favorito?',
+      'respostas': [
+        'Maria',
+        'João',
+        'Leo',
+        'Pedro',
+      ]
+    }
+  ];
 
   void _responder() {
-    setState(() {
-      _perguntaSelecionada++;
-    });
+    if (temPerguntaSelecionada) {
+      setState(() {
+        _perguntaSelecionada++;
+      });
+    }
     print(_perguntaSelecionada);
   }
 
@@ -21,39 +52,15 @@ class _PerguntaAppState extends State<PerguntaApp> {
     };
   }
 
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, Object>> perguntas = [
-      {
-        'texto': 'Qual é a sua cor favorita?',
-        'respostas': [
-          'Preto',
-          'Vermelho',
-          'Verde',
-          'Branco',
-        ]
-      },
-      {
-        'texto': 'Qual é seu animal favorito?',
-        'respostas': [
-          'Coelho',
-          'Cobra',
-          'Elefante',
-          'Leão',
-        ]
-      },
-      {
-        'texto': 'Qual é seu instrutor favorito?',
-        'respostas': [
-          'Maria',
-          'João',
-          'Leo',
-          'Pedro',
-        ]
-      }
-    ];
-
-    List<String> respostas = perguntas[_perguntaSelecionada]['respostas'];
+    List<String> respostas = temPerguntaSelecionada
+        ? _perguntas[_perguntaSelecionada]['respostas']
+        : [];
     List<Widget> widgets =
         respostas.map((texto) => Resposta(texto, _responder)).toList();
 
@@ -66,11 +73,12 @@ class _PerguntaAppState extends State<PerguntaApp> {
         appBar: AppBar(
           title: Text('Perguntas'),
         ),
-        body: Column(
-          children: [
-            Questao(perguntas[_perguntaSelecionada]['texto']),
-            ...widgets
-            /*
+        body: temPerguntaSelecionada
+            ? Column(
+                children: [
+                  Questao(_perguntas[_perguntaSelecionada]['texto']),
+                  ...widgets
+                  /*
             Resposta('Resposta 1 widget', _responder),
             ElevatedButton(onPressed: _responder, child: Text('Resposta 1')),
             ElevatedButton(
@@ -85,8 +93,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 onPressed: () => print('responder 4'),
                 child: Text('Resposta 4')),
                 */
-          ],
-        ),
+                ],
+              )
+            : null,
       ),
     );
   }
