@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import './questao.dart';
-import './resposta.dart';
+import './questionario.dart';
 import './resultado.dart';
 
 main() => runApp(PerguntaApp());
@@ -38,6 +36,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
     }
   ];
 
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
+  }
+
   void _responder() {
     if (temPerguntaSelecionada) {
       setState(() {
@@ -53,49 +55,18 @@ class _PerguntaAppState extends State<PerguntaApp> {
     };
   }
 
-  bool get temPerguntaSelecionada {
-    return _perguntaSelecionada < _perguntas.length;
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<String> respostas = temPerguntaSelecionada
-        ? _perguntas[_perguntaSelecionada]['respostas']
-        : [];
-    List<Widget> widgets =
-        respostas.map((texto) => Resposta(texto, _responder)).toList();
-
-    // for (var textoResp in respostas) {
-    //   widgets.add(Resposta(textoResp, _responder));
-    // }
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('Perguntas'),
         ),
         body: temPerguntaSelecionada
-            ? Column(
-                children: [
-                  Questao(_perguntas[_perguntaSelecionada]['texto']),
-                  ...widgets
-                  /*
-            Resposta('Resposta 1 widget', _responder),
-            ElevatedButton(onPressed: _responder, child: Text('Resposta 1')),
-            ElevatedButton(
-                onPressed: () {
-                  print('responder 2');
-                },
-                child: Text('Resposta 2')),
-            ElevatedButton(
-                onPressed: funcaoQueRetornaUmaOutraFuncao(),
-                child: Text('Resposta 3')),
-            ElevatedButton(
-                onPressed: () => print('responder 4'),
-                child: Text('Resposta 4')),
-                */
-                ],
-              )
+            ? Questionario(
+                perguntas: _perguntas,
+                perguntaSelecionada: _perguntaSelecionada,
+                responder: _responder)
             : Resultado(),
       ),
     );
