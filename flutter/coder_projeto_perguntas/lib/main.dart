@@ -52,6 +52,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
     print(_pontuacaoFinal);
   }
 
+  void _reiniciarQuestionario() {
+    setState(() {
+      _perguntaSelecionada = 0;
+      _pontuacaoFinal = 0;
+    });
+  }
+
   void Function() funcaoQueRetornaUmaOutraFuncao() {
     return () {
       print('Pergunta respondida #02!');
@@ -70,7 +77,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 perguntas: _perguntas,
                 perguntaSelecionada: _perguntaSelecionada,
                 responder: _responder)
-            : Resultado(_pontuacaoFinal),
+            : Resultado(_pontuacaoFinal, _reiniciarQuestionario),
       ),
     );
   }
