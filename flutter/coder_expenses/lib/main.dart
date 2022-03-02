@@ -1,43 +1,59 @@
-import 'package:coder_expenses/components/transaction_form.dart';
 import 'package:flutter/material.dart';
-import '../components/transaction_form.dart';
-import '../components/transaction_list.dart';
-import '../models/transaction.dart';
 import 'dart:math';
+import './components/transaction_form.dart';
+import './components/transaction_list.dart';
+import 'models/transaction.dart';
 
 main() => runApp(ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage());
+    final ThemeData tema = ThemeData();
+
+    return MaterialApp(
+      home: MyHomePage(),
+      theme: tema.copyWith(
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Colors.purple,
+          secondary: Colors.amber,
+        ),
+        textTheme: tema.textTheme.copyWith(
+          headline6: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  _openTransactionFormModal(BuildContext context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (_) {
-          return TransactionForm(_addTransaction);
-        });
-  }
-
   final _transactions = [
     Transaction(
       id: 't1',
-      title: 'novo tênis de corrida',
+      title: 'Novo Tênis de Corrida',
       value: 310.76,
       date: DateTime.now(),
     ),
     Transaction(
       id: 't2',
-      title: 'conta de luz',
+      title: 'Conta de Luz',
       value: 211.30,
       date: DateTime.now(),
     ),
@@ -45,10 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
-        id: Random().nextDouble().toString(),
-        title: title,
-        value: value,
-        date: DateTime.now());
+      id: Random().nextDouble().toString(),
+      title: title,
+      value: value,
+      date: DateTime.now(),
+    );
 
     setState(() {
       _transactions.add(newTransaction);
@@ -57,15 +74,25 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 
+  _openTransactionFormModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return TransactionForm(_addTransaction);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Despesas Pessoais'),
-        actions: [
+        actions: <Widget>[
           IconButton(
-              onPressed: () => _openTransactionFormModal(context),
-              icon: Icon(Icons.add))
+            icon: Icon(Icons.add),
+            onPressed: () => _openTransactionFormModal(context),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -73,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
+              width: double.infinity,
               child: Card(
                 color: Colors.blue,
                 child: Text('Gráfico'),
@@ -84,8 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _openTransactionFormModal(context),
         child: Icon(Icons.add),
+        onPressed: () => _openTransactionFormModal(context),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
