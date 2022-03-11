@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/transaction.dart';
-import './char_bar.dart';
+import 'chart_bar.dart';
 
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransaction;
@@ -42,7 +42,7 @@ class Chart extends StatelessWidget {
           return ChartBar(
               label: tr['day'].toString(),
               value: double.parse(tr['value'].toString()),
-              percent: 0);
+              percent: 0.5);
         }).toList(),
       ),
     );
