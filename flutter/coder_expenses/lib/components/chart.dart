@@ -32,6 +32,13 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get _weekValue {
+    return groupedTransactions.fold(
+        0.0,
+        (previousValue, element) =>
+            previousValue + (element['value'] as double));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -41,8 +48,8 @@ class Chart extends StatelessWidget {
         children: groupedTransactions.map((tr) {
           return ChartBar(
               label: tr['day'].toString(),
-              value: double.parse(tr['value'].toString()),
-              percent: 0.5);
+              value: (tr['value'] as double),
+              percent: (tr['value'] as double) / _weekValue);
         }).toList(),
       ),
     );
