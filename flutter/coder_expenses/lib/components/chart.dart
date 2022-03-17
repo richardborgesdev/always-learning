@@ -29,7 +29,7 @@ class Chart extends StatelessWidget {
       print(chartValues);
 
       return chartValues;
-    });
+    }).reversed.toList();
   }
 
   double get _weekValue {
