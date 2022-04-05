@@ -144,6 +144,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       actions: <Widget>[
         IconButton(
+          icon: Icon(_showChart ? Icons.list : Icons.show_chart),
+          onPressed: () {
+            setState(() {
+              _showChart = !_showChart;
+            });
+          },
+        ),
+        IconButton(
           icon: Icon(Icons.add),
           onPressed: () => _openTransactionFormModal(context),
         ),
