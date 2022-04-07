@@ -53,7 +53,7 @@ class _TransactionFormState extends State<TransactionForm> {
             top: 10,
             right: 10,
             left: 10,
-            bottom: 10 + MediaQuery.of(context).viewInsets.bottom,
+            bottom: 10 /*+ MediaQuery.of(context).viewInsets.bottom*/,
           ),
           child: Column(
             children: [
