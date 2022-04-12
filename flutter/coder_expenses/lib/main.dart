@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 import 'dart:math';
@@ -132,78 +133,107 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget _getIconButton(IconData icon, Function fn) {
+    return !kIsWeb && Platform.isIOS
+        ? GestureDetector(
+            onTap: fn,
+            child: Icon(icon),
+          )
+        : IconButton(
+            icon: Icon(icon),
+            onPressed: fn,
+          );
+  }
+
   @override
   Widget build(BuildContext context) {
     final contextMediaQuery = MediaQuery.of(context);
     bool isLandscape = contextMediaQuery.orientation == Orientation.landscape;
-
-    final appBar = AppBar(
-      title: Text(
-        'Despesas Pessoais',
-        style: TextStyle(
-          fontSize: 10 * contextMediaQuery.textScaleFactor,
-        ),
+    final actions = <Widget>[
+      _getIconButton(
+        _showChart ? Icons.list : Icons.show_chart,
+        () {
+          setState(() {
+            _showChart = !_showChart;
+          });
+        },
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(_showChart ? Icons.list : Icons.show_chart),
-          onPressed: () {
-            setState(() {
-              _showChart = !_showChart;
-            });
-          },
-        ),
-        IconButton(
-          icon: Icon(Icons.add),
-          onPressed: () => _openTransactionFormModal(context),
-        ),
-      ],
-    );
+      _getIconButton(
+        !kIsWeb && Platform.isIOS ? CupertinoIcons.add : Icons.add,
+        () => _openTransactionFormModal(context),
+      ),
+    ];
+
+    final PreferredSizeWidget appBar = !kIsWeb && Platform.isIOS
+        ? CupertinoNavigationBar(
+            middle: 'Despesas Pessoais',
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: actions,
+            ),
+          )
+        : AppBar(
+            title: Text(
+              'Despesas Pessoais',
+              style: TextStyle(
+                fontSize: 10 * contextMediaQuery.textScaleFactor,
+              ),
+            ),
+            actions: actions,
+          );
     final availableHeight = contextMediaQuery.size.height -
         appBar.preferredSize.height -
         contextMediaQuery.padding.top;
 
-    return Scaffold(
-      appBar: appBar,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            // if (isLandscape)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Exibir Gráfico'),
-                Switch.adaptive(
-                  activeColor: Theme.of(context).colorScheme.secondary,
-                  value: _showChart,
-                  onChanged: (value) {
-                    setState(() {
-                      _showChart = value;
-                    });
-                  },
+    final bodyPage = SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          // if (isLandscape)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Exibir Gráfico'),
+              Switch.adaptive(
+                activeColor: Theme.of(context).colorScheme.secondary,
+                value: _showChart,
+                onChanged: (value) {
+                  setState(() {
+                    _showChart = value;
+                  });
+                },
+              ),
+            ],
+          ),
+          _showChart /*|| !isLandscape*/
+              ? Container(
+                  height: availableHeight * (isLandscape ? 0.7 : 0.3),
+                  child: Chart(_recentTransactions),
+                )
+              : Container(
+                  height: availableHeight * (isLandscape ? 1 : 0.7),
+                  child: TransactionList(_transactions, _removeTransaction),
                 ),
-              ],
-            ),
-            _showChart /*|| !isLandscape*/
-                ? Container(
-                    height: availableHeight * (isLandscape ? 0.7 : 0.3),
-                    child: Chart(_recentTransactions),
-                  )
-                : Container(
-                    height: availableHeight * (isLandscape ? 1 : 0.7),
-                    child: TransactionList(_transactions, _removeTransaction),
-                  ),
-          ],
-        ),
+        ],
       ),
-      floatingActionButton: !kIsWeb && Platform.isIOS
-          ? Container()
-          : FloatingActionButton(
-              child: Icon(Icons.add),
-              onPressed: () => _openTransactionFormModal(context),
-            ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+
+    return !kIsWeb && Platform.isIOS
+        ? CupertinoPageScaffold(
+            child: bodyPage,
+            navigationBar: appBar,
+          )
+        : Scaffold(
+            appBar: appBar,
+            body: bodyPage,
+            floatingActionButton: !kIsWeb && Platform.isIOS
+                ? Container()
+                : FloatingActionButton(
+                    child: Icon(Icons.add),
+                    onPressed: () => _openTransactionFormModal(context),
+                  ),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
+          );
   }
 }
