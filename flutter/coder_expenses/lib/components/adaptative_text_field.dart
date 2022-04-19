@@ -3,10 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-bool isCupertino() {
-  return !kIsWeb && Platform.isIOS;
-}
-
 class AdaptativeTextField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -19,6 +15,10 @@ class AdaptativeTextField extends StatelessWidget {
     required this.onSubmitted,
     required this.label,
   });
+
+  bool isCupertino() {
+    return !kIsWeb && Platform.isIOS;
+  }
 
   @override
   Widget build(BuildContext context) {
