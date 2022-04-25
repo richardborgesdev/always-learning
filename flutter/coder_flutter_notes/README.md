@@ -23,3 +23,6 @@ render tree
 ## Quando a tela é atualizada?
 - Quando há mudanças no estado, uma novo árvore de widgets é gerada
 - árvore de elementos só é alterada, quando os tipos mudam
+
+## Quando o método build é chamado?
+- revisão dos métodos abordados dentro da aplicação de despesas
