@@ -26,3 +26,10 @@ render tree
 
 ## Quando o método build é chamado?
 - revisão dos métodos abordados dentro da aplicação de despesas
+
+
+## Construtores e widgets constantes
+- final, constante em runtime
+- const, valor atribuido deve ser conhecido no momento da compilação
+- construtor const, todos os atributos devem ser final
+- construtor constante gera um componente constante
