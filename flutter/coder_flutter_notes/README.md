@@ -33,3 +33,12 @@ render tree
 - const, valor atribuido deve ser conhecido no momento da compilação
 - construtor const, todos os atributos devem ser final
 - construtor constante gera um componente constante
+
+## Escrevendo bons códigos
+- fácil leitura e entendimento
+- desempenho
+- entender e manter a longo prazo
+- outros devem manter e entender a longo prazo
+- entender o que do desempenho está na sua mão
+- custo beneficio do desempenho
+- explore novas práticas
