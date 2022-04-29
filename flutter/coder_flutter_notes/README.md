@@ -42,3 +42,8 @@ render tree
 - entender o que do desempenho está na sua mão
 - custo beneficio do desempenho
 - explore novas práticas
+
+## ciclo de vida dos widgets
+- sempre que chama um componente chama um construtor
+- stateless > construtor > build()
+- stateful > construtor > initState() > build() > setState() > didUpdateWidget() > build() > dispose()
