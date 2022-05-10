@@ -47,3 +47,9 @@ render tree
 - sempre que chama um componente chama um construtor
 - stateless > construtor > build()
 - stateful > construtor > initState() > build() > setState() > didUpdateWidget() > build() > dispose()
+
+## ciclo de vida da aplicação
+- inativo: nenhuma entrada do usuário é recebida
+- paused: app não visível, executando em background
+- resumed: app novamente visível, respondendo ao usuário
+- suspending: app será fechado
