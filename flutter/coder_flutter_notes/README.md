@@ -53,3 +53,9 @@ render tree
 - paused: app não visível, executando em background
 - resumed: app novamente visível, respondendo ao usuário
 - suspending: app será fechado
+
+## context
+- único para cada elemento
+- meta informação, localização na árvore de componentes
+- theme, media query, navigator
+- inheritedWidget: comunicação mais distantes dentro da árvore de componentes, informações do media query em qualquer lugar da aplicação
