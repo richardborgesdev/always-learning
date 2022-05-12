@@ -59,3 +59,6 @@ render tree
 - meta informação, localização na árvore de componentes
 - theme, media query, navigator
 - inheritedWidget: comunicação mais distantes dentro da árvore de componentes, informações do media query em qualquer lugar da aplicação
+
+## problemas com lista
+- árvore de elmentos referência árvore de widgets stateful errado
