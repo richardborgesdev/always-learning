@@ -61,4 +61,8 @@ render tree
 - inheritedWidget: comunicação mais distantes dentro da árvore de componentes, informações do media query em qualquer lugar da aplicação
 
 ## problemas com lista
-- árvore de elmentos referência árvore de widgets stateful errado
+- árvore de elementos referência árvore de widgets stateful errado
+- quando se remove ou altera ordem da árvore de widgets é necessários atualizar as referências na árvore de elementos
+- utilizar chaves
+- estado está associado a árvore de elementos
+- evitar o uso de globalkey, custo muito caro
