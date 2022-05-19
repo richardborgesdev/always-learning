@@ -9,5 +9,5 @@ class Category {
     required this.id,
     required this.title,
     this.color = Colors.orange,
-  })
+  });
 }
