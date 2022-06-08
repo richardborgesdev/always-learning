@@ -3,6 +3,7 @@ import './screens/category_screen.dart';
 import './screens/category_meals_screen.dart';
 import './screens/meal_detail_screen.dart';
 import './utils/apps_routes.dart';
+import 'screens/tabs_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,9 +23,8 @@ class MyApp extends StatelessWidget {
               fontFamily: 'RobotoCondensed',
             )),
       ),
-      home: CategoriesScreen(),
+      home: TabsScreen(),
       routes: {
-        // AppRoutes.HOME: (context) => CategoriesScreen(),
         AppRoutes.CATEGORIES_MEALS: (context) => CategoriesMealsScreen(),
         AppRoutes.MEAL_DETAIL: (context) => MealDetailScreen(),
       },
