@@ -50,6 +50,9 @@ class _TabsScreenState extends State<TabsScreen> {
         //     FavoriteScreen(),
         //   ],
         // ),
+        drawer: Drawer(
+          child: Text('Drawer'),
+        ),
         body: _screens[_selectedScreenIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectScreen,
