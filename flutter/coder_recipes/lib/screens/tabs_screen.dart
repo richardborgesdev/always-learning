@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'category_screen.dart';
 import 'favorite_screen.dart';
+import '../components/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -50,9 +51,7 @@ class _TabsScreenState extends State<TabsScreen> {
         //     FavoriteScreen(),
         //   ],
         // ),
-        drawer: Drawer(
-          child: Text('Drawer'),
-        ),
+        drawer: MainDrawer(),
         body: _screens[_selectedScreenIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectScreen,
