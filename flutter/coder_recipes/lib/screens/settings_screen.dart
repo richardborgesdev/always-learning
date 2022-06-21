@@ -12,7 +12,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     String title,
     String subtitle,
     bool value,
-    Function() onChanged,
+    Function onChanged,
   ) {
     return SwitchListTile.adaptive(
       title: Text(title),
@@ -47,10 +47,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 _createSwitch(
                   'Sem Glutén',
-                  'Só exibe refeições em glutén',
+                  'Só exibe refeições sem glutén',
                   settings.isGlutenFree,
                   (value) => setState(() => settings.isGlutenFree = value),
-                )
+                ),
               ],
             ),
           )
