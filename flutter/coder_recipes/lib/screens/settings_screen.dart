@@ -51,6 +51,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   settings.isGlutenFree,
                   (value) => setState(() => settings.isGlutenFree = value),
                 ),
+                _createSwitch(
+                  'Sem Lactose',
+                  'Só exibe refeições sem lactose',
+                  settings.isLactoseFree,
+                  (value) => setState(() => settings.isLactoseFree = value),
+                ),
+                _createSwitch(
+                  'Vegana',
+                  'Só exibe refeições veganas',
+                  settings.isVegan,
+                  (value) => setState(() => settings.isVegan = value),
+                ),
+                _createSwitch(
+                  'Vegetariana',
+                  'Só exibe refeições vegetarianas',
+                  settings.isVegetarian,
+                  (value) => setState(() => settings.isVegetarian = value),
+                ),
               ],
             ),
           )
