@@ -3,7 +3,7 @@ import 'package:shop/data/dummy_data.dart';
 import '../models/product.dart';
 import '../components/product_item.dart';
 
-class ProductsOverviewPages extends StatelessWidget {
+class ProductsOverviewPage extends StatelessWidget {
   final List<Product> loadedProducts = dummyProducts;
 
   @override
