@@ -4,7 +4,7 @@ class CounterState {
   int _value = 0;
 
   void inc() => _value++;
-  void dev() => _value--;
+  void dec() => _value--;
   int get value => _value;
 }
 
