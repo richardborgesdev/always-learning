@@ -6,7 +6,10 @@ import '../models/product.dart';
 class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context);
+    final product = Provider.of<Product>(
+      context,
+      listen: true, // False don't notify listeners, use with immutable items
+    );
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(
