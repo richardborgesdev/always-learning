@@ -34,14 +34,23 @@ class ProductItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           backgroundColor: Colors.black87,
-          leading: IconButton(
-            icon: Icon(
-              product.isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: Theme.of(context).accentColor,
+          leading: Consumer<Product>(
+            child: Column(
+              children: [
+                Text('nunca muda 01'),
+                Text('nunca muda 02'),
+                Text('nunca muda 03'),
+              ],
             ),
-            onPressed: () {
-              product.toggleFavorite();
-            },
+            builder: (context, product, _) => IconButton(
+              icon: Icon(
+                product.isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: Theme.of(context).accentColor,
+              ),
+              onPressed: () {
+                product.toggleFavorite();
+              },
+            ),
           ),
           trailing: IconButton(
             icon: Icon(
