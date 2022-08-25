@@ -53,7 +53,13 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
                 }
               });
             },
-          )
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.shopping_cart,
+            ),
+          ),
         ],
       ),
       body: ProductGrid(_showFavoriteOnly),
