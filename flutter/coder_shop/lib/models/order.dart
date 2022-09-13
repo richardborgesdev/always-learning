@@ -11,5 +11,5 @@ class Order {
     required this.total,
     required this.products,
     required this.date,
-  })
+  });
 }
