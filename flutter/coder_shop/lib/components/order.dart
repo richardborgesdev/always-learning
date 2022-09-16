@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../models/order.dart';
 
-class OrderWidget extends StatelessWidget {
+class OrderWidget extends StatefulWidget {
   final Order order;
 
   const OrderWidget({
@@ -12,23 +12,53 @@ class OrderWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<OrderWidget> createState() => _OrderWidgetState();
+}
+
+class _OrderWidgetState extends State<OrderWidget> {
+  bool _expanded = false;
+
+  @override
   Widget build(BuildContext context) {
     return Card(
-      child: ListTile(
-        title: Text('R\$ ${order.total.toStringAsFixed(2)}'),
-        subtitle: Text(
-          DateFormat(
-            'dd/MM/yyyy hh:mm',
-          ).format(
-            order.date,
+      child: Column(
+        children: [
+          ListTile(
+            title: Text('R\$ ${widget.order.total.toStringAsFixed(2)}'),
+            subtitle: Text(
+              DateFormat(
+                'dd/MM/yyyy hh:mm',
+              ).format(
+                widget.order.date,
+              ),
+            ),
+            trailing: IconButton(
+              icon: Icon(
+                Icons.expand_more,
+              ),
+              onPressed: () {
+                setState(() {
+                  _expanded = !_expanded;
+                });
+              },
+            ),
           ),
-        ),
-        trailing: IconButton(
-          icon: Icon(
-            Icons.expand_more,
-          ),
-          onPressed: () {},
-        ),
+          if (_expanded)
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 4,
+              ),
+              height: 200,
+              child: ListView(
+                children: widget.order.products
+                    .map(
+                      (product) => Row(),
+                    )
+                    .toList(),
+              ),
+            )
+        ],
       ),
     );
   }
