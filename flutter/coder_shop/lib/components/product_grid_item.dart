@@ -67,14 +67,16 @@ class ProductGridItem extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
-                    'Producto adicionado com sucesso!',
+                    'Produto adicionado com sucesso!',
                   ),
                   duration: Duration(
                     seconds: 2,
                   ),
                   action: SnackBarAction(
                     label: 'DESFAZER',
-                    onPressed: () {},
+                    onPressed: () {
+                      cart.removeSingleItem(product.id);
+                    },
                   ),
                 ),
               );
