@@ -45,7 +45,7 @@ class Cart with ChangeNotifier {
   }
 
   int get itemsCount {
-    return items.length;
+    return _items.length;
   }
 
   void addItem(Product product) {
