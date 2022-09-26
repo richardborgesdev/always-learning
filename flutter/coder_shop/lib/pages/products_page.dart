@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:shop/components/app_drawer.dart';
 import 'package:shop/models/product_list.dart';
 
+import '../components/product_item.dart';
+
 class ProductsPage extends StatelessWidget {
   const ProductsPage({Key? key}) : super(key: key);
 
@@ -23,8 +25,13 @@ class ProductsPage extends StatelessWidget {
         ),
         child: ListView.builder(
           itemCount: products.itemsCount,
-          itemBuilder: (context, index) => Text(
-            products.items[index].name,
+          itemBuilder: (context, index) => Column(
+            children: [
+              ProductItem(
+                product: products.items[index],
+              ),
+              Divider(),
+            ],
           ),
         ),
       ),
