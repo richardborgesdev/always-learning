@@ -29,12 +29,18 @@ class ProductItem extends StatelessWidget {
             icon: Icon(
               Icons.edit,
             ),
+            color: Theme.of(
+              context,
+            ).primaryColor,
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.delete,
             ),
+            color: Theme.of(
+              context,
+            ).errorColor,
           ),
         ]),
       ),
