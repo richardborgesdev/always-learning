@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop/utils/app_routes.dart';
 
 import '../models/product.dart';
 
@@ -25,7 +26,13 @@ class ProductItem extends StatelessWidget {
         width: 100,
         child: Row(children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).pushNamed(
+                AppRoutes.PRODUCTS_FORM,
+              );
+            },
             icon: Icon(
               Icons.edit,
             ),
