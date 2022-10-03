@@ -10,12 +10,15 @@ class ProductFormPage extends StatefulWidget {
 class _ProductFormPageState extends State<ProductFormPage> {
   final _priceFocus = FocusNode();
   final _descriptionFocus = FocusNode();
+  final _urlFocus = FocusNode();
+  final _imageURLController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
     _priceFocus.dispose();
     _descriptionFocus.dispose();
+    _urlFocus.dispose();
   }
 
   @override
@@ -67,6 +70,47 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 focusNode: _descriptionFocus,
                 keyboardType: TextInputType.multiline,
                 maxLines: 3,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'URL',
+                      ),
+                      textInputAction: TextInputAction.done,
+                      focusNode: _urlFocus,
+                      keyboardType: TextInputType.url,
+                      controller: _imageURLController,
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.green,
+                        width: 1,
+                      ),
+                    ),
+                    margin: const EdgeInsets.only(
+                      top: 10,
+                      left: 10,
+                    ),
+                    alignment: Alignment.center,
+                    child: _imageURLController.text.isEmpty
+                        ? Text(
+                            'Informe a URL',
+                          )
+                        : FittedBox(
+                            child: Image.network(
+                              _imageURLController.text,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                  ),
+                ],
               ),
             ],
           ),
