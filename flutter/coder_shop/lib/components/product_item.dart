@@ -31,6 +31,7 @@ class ProductItem extends StatelessWidget {
                 context,
               ).pushNamed(
                 AppRoutes.PRODUCTS_FORM,
+                arguments: product,
               );
             },
             icon: Icon(
