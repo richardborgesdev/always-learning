@@ -41,6 +41,9 @@ class ProductList with ChangeNotifier {
 
       _items.add(product);
       notifyListeners();
+    }).catchError((error) {
+      print(error.toString());
+      throw error;
     });
   }
 
