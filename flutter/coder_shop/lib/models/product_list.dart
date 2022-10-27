@@ -14,8 +14,8 @@ class ProductList with ChangeNotifier {
   List<Product> get favoriteItems =>
       _items.where((item) => item.isFavorite).toList();
 
-  Future<void> addProduct(Product product) {
-    final postAddProduct = http.post(
+  Future<void> addProduct(Product product) async {
+    final postAddProductResponse = await http.post(
       Uri.parse('$_baseURL/products.json'),
       body: jsonEncode({
         "name": product.name,
@@ -26,25 +26,20 @@ class ProductList with ChangeNotifier {
       }),
     );
 
-    return postAddProduct.then((response) {
-      final id = jsonDecode(response.body)['name'];
-      _items.add(
-        Product(
-          id: id,
-          name: product.name,
-          description: product.description,
-          price: product.price,
-          imageUrl: product.imageUrl,
-          isFavorite: product.isFavorite,
-        ),
-      );
+    final id = jsonDecode(postAddProductResponse.body)['name'];
+    _items.add(
+      Product(
+        id: id,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        isFavorite: product.isFavorite,
+      ),
+    );
 
-      _items.add(product);
-      notifyListeners();
-    }).catchError((error) {
-      print(error.toString());
-      throw error;
-    });
+    _items.add(product);
+    notifyListeners();
   }
 
   Future<void> updateProduct(Product product) {
