@@ -21,6 +21,15 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
   bool _showFavoriteOnly = false;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    Provider.of<ProductList>(
+      context,
+      listen: false,
+    ).loadProducts();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductList>(context);
 
