@@ -9,7 +9,8 @@ import 'package:shop/models/product.dart';
 class ProductList with ChangeNotifier {
   final _baseURL = 'https://addDBId-default-rtdb.firebaseio.com/products.json';
 
-  List<Product> _items = dummyProducts;
+  // List<Product> _items = dummyProducts;
+  List<Product> _items = [];
   List<Product> get items => [..._items];
   List<Product> get favoriteItems =>
       _items.where((item) => item.isFavorite).toList();
@@ -46,6 +47,25 @@ class ProductList with ChangeNotifier {
     final response = await http.get(
       Uri.parse(_baseURL),
     );
+
+    if (response.body == 'null') return;
+
+    Map<String, dynamic> data = jsonDecode(response.body);
+
+    data.forEach((productId, productData) {
+      _items.add(
+        Product(
+          id: productId,
+          name: productData['name'],
+          description: productData['description'],
+          price: productData['price'],
+          imageUrl: productData['imageUrl'],
+          isFavorite: productData['isFavorite'],
+        ),
+      );
+
+      notifyListeners();
+    });
   }
 
   Future<void> updateProduct(Product product) {
