@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 // import 'package:shop/data/dummy_data.dart';
 import 'package:shop/models/product.dart';
+import 'package:shop/exceptions/http_exception.dart';
 
 class ProductList with ChangeNotifier {
   final _baseURL = 'https://addDBId-default-rtdb.firebaseio.com/products';
@@ -105,6 +106,12 @@ class ProductList with ChangeNotifier {
         _items.insert(
           index,
           product,
+        );
+        notifyListeners();
+
+        throw HttpException(
+          msg: 'Não foi possível excluir o produto',
+          statusCode: response.statusCode,
         );
       }
     }
