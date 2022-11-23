@@ -19,6 +19,8 @@ class _AuthFormState extends State<AuthForm> {
     'password': '',
   };
   final _passwordController = TextEditingController();
+  bool _isLogin() => _authMode == AuthMode.Login;
+  bool _isSignup() => _authMode == AuthMode.Signup;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,7 @@ class _AuthFormState extends State<AuthForm> {
                 return null;
               },
             ),
-            if (_authMode == AuthMode.Login)
+            if (_isSignup())
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Confirmar Senha',
@@ -98,7 +100,7 @@ class _AuthFormState extends State<AuthForm> {
             ),
             ElevatedButton(
               onPressed: _submit,
-              child: Text(_authMode == AuthMode.Login ? 'ENTRAR' : 'REGISTRAR'),
+              child: Text(_isLogin() ? 'ENTRAR' : 'REGISTRAR'),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
