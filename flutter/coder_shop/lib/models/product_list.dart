@@ -3,22 +3,23 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-// import 'package:shop/data/dummy_data.dart';
 import 'package:shop/models/product.dart';
 import 'package:shop/exceptions/http_exception.dart';
 
 import '../utils/constants.dart';
 
 class ProductList with ChangeNotifier {
-  // List<Product> _items = dummyProducts;
+  String _token;
   List<Product> _items = [];
   List<Product> get items => [..._items];
   List<Product> get favoriteItems =>
       _items.where((item) => item.isFavorite).toList();
 
+  ProductList(this._token, this._items);
+
   Future<void> addProduct(Product product) async {
     final postAddProductResponse = await http.post(
-      Uri.parse('${Constants.PRODUCT_BASE_URL}.json'),
+      Uri.parse('${Constants.PRODUCT_BASE_URL}.json?auth=$_token'),
       body: jsonEncode({
         "name": product.name,
         "description": product.description,
@@ -48,7 +49,7 @@ class ProductList with ChangeNotifier {
     _items.clear();
 
     final response = await http.get(
-      Uri.parse('${Constants.PRODUCT_BASE_URL}.json'),
+      Uri.parse('${Constants.PRODUCT_BASE_URL}.json?auth=...'),
     );
 
     if (response.body == 'null') return;
