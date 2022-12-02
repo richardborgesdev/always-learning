@@ -49,7 +49,7 @@ class ProductList with ChangeNotifier {
     _items.clear();
 
     final response = await http.get(
-      Uri.parse('${Constants.PRODUCT_BASE_URL}.json?auth=...'),
+      Uri.parse('${Constants.PRODUCT_BASE_URL}.json?auth=$_token'),
     );
 
     if (response.body == 'null') return;
@@ -77,7 +77,8 @@ class ProductList with ChangeNotifier {
 
     if (index >= 0) {
       await http.patch(
-        Uri.parse('${Constants.PRODUCT_BASE_URL}/${product.id}.json'),
+        Uri.parse(
+            '${Constants.PRODUCT_BASE_URL}/${product.id}.json?auth=$_token'),
         body: jsonEncode({
           "name": product.name,
           "description": product.description,
@@ -100,7 +101,8 @@ class ProductList with ChangeNotifier {
       notifyListeners();
 
       final response = await http.delete(
-        Uri.parse('${Constants.PRODUCT_BASE_URL}/${product.id}.json'),
+        Uri.parse(
+            '${Constants.PRODUCT_BASE_URL}/${product.id}.json?auth=$_token'),
       );
 
       if (response.statusCode >= 400) {
