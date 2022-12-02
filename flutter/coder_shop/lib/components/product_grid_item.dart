@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/models/cart.dart';
 import 'package:shop/utils/app_routes.dart';
+import '../models/auth.dart';
 import '../models/product.dart';
 
 class ProductGridItem extends StatelessWidget {
@@ -15,6 +16,7 @@ class ProductGridItem extends StatelessWidget {
       context,
       listen: false, // False don't notify listeners, use with immutable items
     );
+    final auth = Provider.of<Auth>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(
@@ -53,7 +55,7 @@ class ProductGridItem extends StatelessWidget {
                 color: Theme.of(context).accentColor,
               ),
               onPressed: () {
-                product.toggleFavorite();
+                product.toggleFavorite(auth.token ?? '');
               },
             ),
           ),
