@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class Auth with ChangeNotifier {
   String? _email;
   String? _userId;
   DateTime? _expireDate;
+  Timer? _logoutTimer;
   static const _url = 'firebase/api';
 
   bool get isAuth {
@@ -56,6 +58,7 @@ class Auth with ChangeNotifier {
         ),
       );
 
+      _autoLogout();
       notifyListeners();
     }
   }
@@ -74,6 +77,22 @@ class Auth with ChangeNotifier {
     _userId = null;
     _expireDate = null;
 
+    _clearLogoutTimer();
     notifyListeners();
+  }
+
+  void _clearLogoutTimer() {
+    _logoutTimer?.cancel();
+    _logoutTimer = null;
+  }
+
+  void _autoLogout() {
+    _clearLogoutTimer();
+
+    final timeToLogout = _expireDate?.difference(DateTime.now()).inSeconds;
+    _logoutTimer = Timer(
+      Duration(seconds: timeToLogout ?? 0),
+      logout,
+    );
   }
 }
