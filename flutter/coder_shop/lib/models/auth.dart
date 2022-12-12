@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shop/exceptions/auth_exception.dart';
 
+import '../data/store.dart';
+
 class Auth with ChangeNotifier {
   String? _token;
   String? _email;
@@ -58,9 +60,42 @@ class Auth with ChangeNotifier {
         ),
       );
 
+      Store.saveMap(
+        'userData',
+        {
+          'token': _token,
+          'email': _email,
+          'userId': _userId,
+          'expireDate': _expireDate!.toIso8601String(),
+        },
+      );
       _autoLogout();
       notifyListeners();
     }
+  }
+
+  Future<void> tryAutoLogin() async {
+    if (isAuth) {
+      return;
+    }
+
+    final userData = await Store.getMap('userData');
+    if (userData.isEmpty) {
+      return;
+    }
+
+    final expireDate = DateTime.parse(userData['expireDate']);
+    if (expireDate.isBefore(DateTime.now())) {
+      return;
+    }
+
+    _token = userData['token'];
+    _email = userData['email'];
+    _userId = userData['userI'];
+    _expireDate = expireDate;
+
+    _autoLogout();
+    notifyListeners();
   }
 
   Future<void> signup(String email, String password) async {
