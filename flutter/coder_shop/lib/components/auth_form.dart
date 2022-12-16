@@ -69,6 +69,14 @@ class _AuthFormState extends State<AuthForm>
         curve: Curves.linear,
       ),
     );
+
+    _heightAnimation?.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController?.dispose();
   }
 
   @override
@@ -120,8 +128,10 @@ class _AuthFormState extends State<AuthForm>
       setState(() {
         if (_isLogin()) {
           _authMode = AuthMode.Signup;
+          _animationController?.forward();
         } else {
           _authMode = AuthMode.Login;
+          _animationController?.reverse();
         }
       });
     }
@@ -137,7 +147,7 @@ class _AuthFormState extends State<AuthForm>
         padding: const EdgeInsets.all(
           16,
         ),
-        height: _isLogin() ? 310 : 400,
+        height: _heightAnimation?.value.height ?? (_isLogin() ? 310 : 400),
         width: deviceSize.width * 0.75,
         child: Form(
           key: _formKey,
