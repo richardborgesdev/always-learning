@@ -70,7 +70,7 @@ class _AuthFormState extends State<AuthForm>
       ),
     );
 
-    _heightAnimation?.addListener(() => setState(() {}));
+    // _heightAnimation?.addListener(() => setState(() {}));
   }
 
   @override
@@ -143,12 +143,16 @@ class _AuthFormState extends State<AuthForm>
           10,
         ),
       ),
-      child: Container(
-        padding: const EdgeInsets.all(
-          16,
+      child: AnimatedBuilder(
+        animation: _heightAnimation!,
+        builder: (context, childForm) => Container(
+          padding: const EdgeInsets.all(
+            16,
+          ),
+          height: _heightAnimation?.value.height ?? (_isLogin() ? 310 : 400),
+          width: deviceSize.width * 0.75,
+          child: childForm,
         ),
-        height: _heightAnimation?.value.height ?? (_isLogin() ? 310 : 400),
-        width: deviceSize.width * 0.75,
         child: Form(
           key: _formKey,
           child: Column(
