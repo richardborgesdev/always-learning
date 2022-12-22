@@ -28,7 +28,7 @@ class _AuthFormState extends State<AuthForm>
   bool _isLoading = false;
 
   AnimationController? _animationController;
-  Animation<Size>? _heightAnimation;
+  Animation<double>? _opacityAnimation;
 
   bool _isLogin() => _authMode == AuthMode.Login;
   bool _isSignup() => _authMode == AuthMode.Signup;
@@ -60,9 +60,9 @@ class _AuthFormState extends State<AuthForm>
       ),
     );
 
-    _heightAnimation = Tween(
-      begin: Size(double.infinity, 310),
-      end: Size(double.infinity, 400),
+    _opacityAnimation = Tween(
+      begin: 0.0,
+      end: 1.0,
     ).animate(
       CurvedAnimation(
         parent: _animationController!,
@@ -191,23 +191,33 @@ class _AuthFormState extends State<AuthForm>
                   return null;
                 },
               ),
-              if (_isSignup())
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Confirmar Senha',
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                  obscureText: true,
-                  validator: (_password) {
-                    final password = _password ?? '';
-
-                    if (password != _passwordController.text) {
-                      return 'Senhas informadas não conferem.';
-                    }
-
-                    return null;
-                  },
+              AnimatedContainer(
+                constraints: BoxConstraints(
+                  minHeight: _isLogin() ? 0 : 60,
+                  maxHeight: _isLogin() ? 0 : 120,
                 ),
+                duration: Duration(milliseconds: 300),
+                curve: Curves.linear,
+                child: FadeTransition(
+                  opacity: _opacityAnimation!,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Confirmar Senha',
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    obscureText: true,
+                    validator: (_password) {
+                      final password = _password ?? '';
+
+                      if (password != _passwordController.text) {
+                        return 'Senhas informadas não conferem.';
+                      }
+
+                      return null;
+                    },
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),
