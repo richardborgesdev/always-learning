@@ -29,9 +29,10 @@ class _AuthFormState extends State<AuthForm>
 
   AnimationController? _animationController;
   Animation<double>? _opacityAnimation;
+  Animation<Offset>? _slideAnimation;
 
   bool _isLogin() => _authMode == AuthMode.Login;
-  bool _isSignup() => _authMode == AuthMode.Signup;
+  // bool _isSignup() => _authMode == AuthMode.Signup;
   void _showErrorDialog(String msg) {
     showDialog(
       context: context,
@@ -63,6 +64,16 @@ class _AuthFormState extends State<AuthForm>
     _opacityAnimation = Tween(
       begin: 0.0,
       end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController!,
+        curve: Curves.linear,
+      ),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: Offset(0, -1.5),
+      end: Offset(0, 0),
     ).animate(
       CurvedAnimation(
         parent: _animationController!,
@@ -173,23 +184,26 @@ class _AuthFormState extends State<AuthForm>
                   return null;
                 },
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Senha',
+              SlideTransition(
+                position: _slideAnimation!,
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Senha',
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: true,
+                  controller: _passwordController,
+                  onSaved: (password) => _authData['password'] = password ?? '',
+                  validator: (_password) {
+                    final password = _password ?? '';
+
+                    if (password.trim().isEmpty || password.length < 5) {
+                      return 'Informe uma senha válida.';
+                    }
+
+                    return null;
+                  },
                 ),
-                keyboardType: TextInputType.emailAddress,
-                obscureText: true,
-                controller: _passwordController,
-                onSaved: (password) => _authData['password'] = password ?? '',
-                validator: (_password) {
-                  final password = _password ?? '';
-
-                  if (password.trim().isEmpty || password.length < 5) {
-                    return 'Informe uma senha válida.';
-                  }
-
-                  return null;
-                },
               ),
               AnimatedContainer(
                 constraints: BoxConstraints(
